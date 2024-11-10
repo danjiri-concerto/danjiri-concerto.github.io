@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <script src="loadHtml.js"></script>
+    <script src="/loadHtml.js"></script>
     <div id="head-placeholder"></div>
     <script>
         // head.html の読み込み
         window.addEventListener('DOMContentLoaded', () => {
-            loadHtml("head-placeholder", "head.html");
+            loadHtml("head-placeholder", "/head.html");
         });
     </script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
-    <script>
+    <!-- <script>
         // footer.html の読み込み
-        loadHtml("navbar-placeholder", "navbar.html");
-    </script>
-    <div id="navbar"></div>
+        loadHtml("navbar-placeholder", "/navbar.html");
+    </script> -->
 
     <section id="hero">
         <div class="hero-container">
@@ -68,7 +67,7 @@
     <div id="footer-placeholder"></div> <!-- footer.html を挿入する場所 -->
     <script>
         // footer.html の読み込み
-        loadHtml("footer-placeholder", "footer.html");
+        loadHtml("footer-placeholder", "/footer.html");
     </script>
 </body>
 </html>
