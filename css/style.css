@@ -189,6 +189,18 @@ h3 {
     margin: 10px 0;
 }
 
+/* トグルボタンのスタイル */
+.toggle-button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
 /* トグルコンテンツのスタイル */
 .toggle-content {
     display: none; /* 初期状態では非表示 */
@@ -196,7 +208,6 @@ h3 {
     border: 1px solid #ddd;
     margin-top: 10px;
     background-color: #f9f9f9;
-    text-align: left;
 }
 
 .toggle-content ul {

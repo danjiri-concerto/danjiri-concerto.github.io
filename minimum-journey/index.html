@@ -178,6 +178,18 @@
             const content = clickedButton.nextElementSibling;
             // const content = document.getElementById("toggleContent");
             // const button = document.querySelector(".toggle-button");
+            while (content && !content.classList.contains("toggle-content")) {
+                console.log("現在のエレメント:", content); // 現在のエレメントを出力
+                content = content.nextElementSibling;
+            }
+
+            // 取得したコンテンツが存在しない場合は処理を中断
+            if (!content) {
+                console.error("toggle-content 要素が見つかりませんでした。");
+                return;
+            }
+
+            // 最終的に取得したエレメントを出力
             console.log("取得した .toggle-content エレメント:", content);
 
             // ボタンのテキスト用のカスタムデータ属性を取得
