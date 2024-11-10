@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="だんじり協奏曲">
-    <title>だんじり協奏曲</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/logos/danjiri.png" type="image/png">
-    <meta name="google-site-verification" content="Pi44q8qMI93649FodMcUiID0i6rDOn7qTEnQZ6qggtM" />
+    <script src="loadHtml.js"></script>
+    <div id="head-placeholder"></div>
+    <script>
+        // head.html の読み込み
+        window.addEventListener('DOMContentLoaded', () => {
+            loadHtml("head-placeholder", "head.html");
+        });
+    </script>
 </head>
 <body>
-    <div id="navbar"></div>
+    <div id="navbar-placeholder"></div>
     <script>
-        // ナビゲーションバーの読み込み
-        fetch("navbar.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("navbar").innerHTML = data;
-            })
-            .catch(error => console.error("Error loading navbar:", error));
+        // footer.html の読み込み
+        loadHtml("navbar-placeholder", "navbar.html");
     </script>
+    <div id="navbar"></div>
 
     <section id="hero">
         <div class="hero-container">
@@ -68,18 +65,10 @@
         </div>
     </section>
 
-    <section id="contact">
-        <div class="content-container">
-            <h2>お問い合わせ</h2>
-            <p>お問い合わせは、以下のメールアドレスからお願いします。</p>
-            <p>Email: danjiri.concerto at gmail.com</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2024 Danjiri Concerto. All rights reserved.</p>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div> <!-- footer.html を挿入する場所 -->
+    <script>
+        // footer.html の読み込み
+        loadHtml("footer-placeholder", "footer.html");
+    </script>
 </body>
 </html>

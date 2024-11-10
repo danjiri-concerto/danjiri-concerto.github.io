@@ -31,6 +31,21 @@ header h1 {
     margin-left: 20px;
 }
 
+.no-style-link {
+    color: inherit;        /* 親要素の色を適用 */
+    text-decoration: none; /* 下線を削除 */
+}
+
+.no-style-link:visited {
+    color: inherit;        /* 訪問済みリンクも親要素の色に */
+}
+
+.no-style-link:hover, .no-style-link:focus, .no-style-link:active {
+    color: inherit;        /* ホバーやアクティブ状態でも色を変えない */
+    text-decoration: none; /* 下線を出さない */
+}
+
+
 nav ul {
     list-style: none;
     display: flex;
