@@ -2,19 +2,17 @@
 <html lang="ja">
 <head>
     <script src="/loadHtml.js"></script>
-    <div id="head-placeholder"></div>
+
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const headPlaceholder = document.getElementById("head-placeholder");
-            if (headPlaceholder) {
-                fetch("/head.html")
-                    .then(response => response.text())
-                    .then(data => {
-                        headPlaceholder.innerHTML = data;
-                    })
-                    .then(loadHeader) // head.html を読み込んだ後に loadHeader 関数を実行
-                    .catch(error => console.error("Error loading head:", error));
-            }
+        document.addEventListener("DOMContentLoaded", function() {
+            const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
+            
+            fetch(headerFile)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
         });
     </script>
 </head>

@@ -5,33 +5,15 @@
 <link rel="icon" href="/images/logos/danjiri.png" type="/image/png">
 
 <script>
-    function loadHeader() {
-        const screenWidth = window.innerWidth;
-        let headerFile = "/navbar-desktop.html";  // デフォルトはPC用
-
-        if (screenWidth <= 768) {  // 768px以下をスマホと判断
-            headerFile = "/navbar-mobile.html";
-        }
-
-        // 選択したファイルを読み込み
+    document.addEventListener("DOMContentLoaded", function() {
+        // スクリーン幅に応じてナビゲーションを読み込む
+        const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
+        
         fetch(headerFile)
             .then(response => response.text())
             .then(data => {
                 document.getElementById("navbar-placeholder").innerHTML = data;
             })
             .catch(error => console.error("Error loading header:", error));
-    }
-
-    // ページ読み込み時にヘッダーを読み込む
-    window.addEventListener('DOMContentLoaded', loadHeader);
-
-    // 画面サイズが変わったときにもヘッダーを更新
-    window.addEventListener('resize', () => {
-        // スマホとPC間でサイズが変わった時のみ更新
-        const currentHeaderFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
-        if (document.getElementById("navbar-placeholder").getAttribute("data-loaded") !== currentHeaderFile) {
-            loadHeader();
-            document.getElementById("navbar-placeholder").setAttribute("data-loaded", currentHeaderFile);
-        }
     });
 </script>
