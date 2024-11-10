@@ -45,7 +45,6 @@ header h1 {
     text-decoration: none; /* 下線を出さない */
 }
 
-
 nav ul {
     list-style: none;
     display: flex;
@@ -74,6 +73,46 @@ nav a:hover {
 #hero h2 {
     font-size: 3rem;
 }
+
+.toc {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;    /* ボーダーの色と太さ */
+    text-align: center;
+}
+.toc h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+}
+.toc ul {
+    list-style: none;
+    padding: 0;
+}
+.toc ul li {
+    margin-bottom: 5px;
+}
+
+.toc a {
+    color: inherit; /* 通常のリンク色 */
+    text-decoration: none; /* 下線を消す場合 */
+}
+
+.toc a:hover {
+    color: #007bff; /* ホバー時のリンク色 */
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}
+
+.toc a:visited {
+    color: inherit; /* 訪問済みリンクの色 */
+}
+
+.toc a:active {
+    color: #0056b3; /* アクティブ時のリンク色 */
+}
+
 
 h3 {
     width: 100%;
@@ -137,6 +176,55 @@ h3 {
 #games .game-item {
     width: 100%;
     margin-bottom: 40px;
+}
+
+.toggle-button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+/* トグルコンテンツのスタイル */
+.toggle-content {
+    display: none; /* 初期状態では非表示 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.toggle-content ul {
+    margin: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* セルの境界線を1本にする */
+}
+
+th, td {
+    border: 1px solid #ddd; /* セルに境界線を追加 */
+    padding: 8px; /* 内側に余白を追加 */
+    text-align: center; /* 左寄せ */
+}
+
+th {
+    background-color: #f2f2f2; /* 見出しの背景色 */
+}
+
+tr:hover {
+    background-color: #f5f5f5; /* 行にホバーしたときの背景色 */
+}
+
+.highlight {
+    color: #ff6347; /* トマト色 */
+    font-weight: bold; /* 太字 */
 }
 
 footer {
