@@ -176,36 +176,25 @@
     </section>
 
     <script>
-        function toggleContent(clickedButton) {
-            // ボタンに続く次の要素をトグル対象として
-            // const content = clickedButton.nextElementSibling;
-            const content = button.closest('.toggle-section').querySelector('.toggle-content');
-            // const content = document.getElementById("toggleContent");
-            // const button = document.querySelector(".toggle-button");
-            while (content && !content.classList.contains("toggle-content")) {
-                console.log("現在のエレメント:", content); // 現在のエレメントを出力
-                content = content.nextElementSibling;
-            }
-
-            // 取得したコンテンツが存在しない場合は処理を中断
-            if (!content) {
-                console.error("toggle-content 要素が見つかりませんでした。");
-                return;
-            }
-
-            // 最終的に取得したエレメントを出力
-            console.log("取得した .toggle-content エレメント:", content);
+        function toggleContent(button) {
+            // ボタンの直後の .toggle-content 要素を取得
+            const content = button.nextElementSibling;
 
             // ボタンのテキスト用のカスタムデータ属性を取得
-            const toggleText = clickedButton.getAttribute("data-toggle-text");
+            const toggleText = button.getAttribute("data-toggle-text");
 
-            // 表示・非表示の切り替え
-            if (content.style.display === "none" || content.style.display === "") {
-                content.style.display = "block";
-                button.innerHTML = `▼ ${toggleText}`;
+            // 取得したコンテンツが .toggle-content クラスを持っているか確認
+            if (content && content.classList.contains("toggle-content")) {
+                // 表示・非表示の切り替え
+                if (content.style.display === "none" || content.style.display === "") {
+                    content.style.display = "block";
+                    button.innerHTML = `▼ ${toggleText}を非表示`;
+                } else {
+                    content.style.display = "none";
+                    button.innerHTML = `▶ ${toggleText}を表示`;
+                }
             } else {
-                content.style.display = "none";
-                button.innerHTML = `▶ ${toggleText}`;
+                console.error("toggle-content 要素が見つかりませんでした。");
             }
         }
     </script>
