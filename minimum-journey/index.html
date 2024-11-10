@@ -4,19 +4,22 @@
     <script src="/loadHtml.js"></script>
     <div id="head-placeholder"></div>
     <script>
-        // head.html の読み込み
         window.addEventListener('DOMContentLoaded', () => {
-            loadHtml("head-placeholder", "/head.html");
+            const headPlaceholder = document.getElementById("head-placeholder");
+            if (headPlaceholder) {
+                fetch("/head.html")
+                    .then(response => response.text())
+                    .then(data => {
+                        headPlaceholder.innerHTML = data;
+                    })
+                    .then(loadHeader) // head.html を読み込んだ後に loadHeader 関数を実行
+                    .catch(error => console.error("Error loading head:", error));
+            }
         });
     </script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
-    <script>
-        // footer.html の読み込み
-        loadHtml("navbar-placeholder", "/navbar.html");
-    </script>
-    <div id="navbar"></div>
 
     <section id="hero">
         <div class="hero-container">
