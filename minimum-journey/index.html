@@ -188,10 +188,10 @@
                 // 表示・非表示の切り替え
                 if (content.style.display === "none" || content.style.display === "") {
                     content.style.display = "block";
-                    button.innerHTML = `▼ ${toggleText}を非表示`;
+                    button.innerHTML = `▼ ${toggleText}`;
                 } else {
                     content.style.display = "none";
-                    button.innerHTML = `▶ ${toggleText}を表示`;
+                    button.innerHTML = `▶ ${toggleText}`;
                 }
             } else {
                 console.error("toggle-content 要素が見つかりませんでした。");
