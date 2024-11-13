@@ -7,12 +7,6 @@
     <link rel="icon" href="/images/logos/danjiri.png" type="/image/png">
     <script src="/loadHtml.js"></script>
 
-    <style>
-        body {
-            padding: 5%;
-        }
-    </style>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
@@ -36,23 +30,25 @@
         </div>
     </section>
 
-    <h1>FAQ</h1>
-    <input type="text" id="filter-input" placeholder="カード名で絞り込み...">
+    <div class="content-container">
+        <h1>FAQ</h1>
+        <input type="text" id="filter-input" placeholder="カード名で絞り込み...">
 
-    <div id="faq-container">
-        <div class="faq-card" data-card-name="カード1">
-            <h2>カード1の質問</h2>
-            <p>カード1の回答内容...</p>
+        <div id="faq-container">
+            <div class="faq-card" data-card-name="カード1">
+                <h2>カード1の質問</h2>
+                <p>カード1の回答内容...</p>
+            </div>
+            <div class="faq-card" data-card-name="カード2">
+                <h2>カード2の質問</h2>
+                <p>カード2の回答内容...</p>
+            </div>
+            <div class="faq-card" data-card-name="カード3">
+                <h2>カード3の質問</h2>
+                <p>カード3の回答内容...</p>
+            </div>
+            <!-- 他のFAQカードも同様に追加 -->
         </div>
-        <div class="faq-card" data-card-name="カード2">
-            <h2>カード2の質問</h2>
-            <p>カード2の回答内容...</p>
-        </div>
-        <div class="faq-card" data-card-name="カード3">
-            <h2>カード3の質問</h2>
-            <p>カード3の回答内容...</p>
-        </div>
-        <!-- 他のFAQカードも同様に追加 -->
     </div>
 
     <script>
