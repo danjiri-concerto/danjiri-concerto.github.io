@@ -7,6 +7,12 @@
     <link rel="icon" href="/images/logos/danjiri.png" type="/image/png">
     <script src="/loadHtml.js"></script>
 
+    <style>
+        body {
+            padding: 5%;
+        }
+    </style>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
@@ -50,6 +56,12 @@
     </div>
 
     <script>
+        // ページが読み込まれた時に全てのFAQ項目を表示
+        document.addEventListener("DOMContentLoaded", function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => item.classList.add('visible'));
+        });
+
         document.getElementById('filter-input').addEventListener('input', function() {
             const filterText = this.value.toLowerCase();
             const faqCards = document.querySelectorAll('.faq-card');
