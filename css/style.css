@@ -241,3 +241,5 @@ footer p {
     margin: 0;
 }
 
+.faq-card { display: none; border: 1px solid #ddd; padding: 20px; margin: 10px 0; }
+.faq-card.visible { display: block; }

@@ -30,97 +30,39 @@
         </div>
     </section>
 
-    <input type="text" id="search-box" placeholder="カード名で検索">
-    <button id="search-button">検索</button>
+    <h1>FAQ</h1>
+    <input type="text" id="filter-input" placeholder="カード名で絞り込み...">
 
-    <select id="attribute-filter">
-        <option value="">すべての属性</option>
-        <option value="1">Fire</option>
-        <option value="2">Water</option>
-        <option value="3">Earth</option>
-        <!-- 他の属性も追加 -->
-    </select>
+    <div id="faq-container">
+        <div class="faq-card" data-card-name="カード1">
+            <h2>カード1の質問</h2>
+            <p>カード1の回答内容...</p>
+        </div>
+        <div class="faq-card" data-card-name="カード2">
+            <h2>カード2の質問</h2>
+            <p>カード2の回答内容...</p>
+        </div>
+        <div class="faq-card" data-card-name="カード3">
+            <h2>カード3の質問</h2>
+            <p>カード3の回答内容...</p>
+        </div>
+        <!-- 他のFAQカードも同様に追加 -->
+    </div>
 
-    <div id="faq-list">
-        <div class="ques" data-name="cardB" data-attribute="1,2">
-          <h3>Card A</h3>
-          <p>Attributes: Fire, Water</p>
-        </div>
-        <div class="ques" data-name="cardA" data-attribute="3">
-          <h3>Card B</h3>
-          <p>Attribute: Earth</p>
-        </div>
-        <!-- 他のカードも同様に定義 -->
-      </div>
-      
-      <input type="text" id="search-box" placeholder="カード名で検索">
-      
-      
-      
     <script>
-        // 属性IDとアイコン画像ファイルのマッピング
-        const iconMap = {
-        1: "images/fire.png",
-        2: "images/water.png",
-        3: "images/earth.png"
-        };
+        document.getElementById('filter-input').addEventListener('input', function() {
+            const filterText = this.value.toLowerCase();
+            const faqCards = document.querySelectorAll('.faq-card');
 
-        // 初回実行で各カードにアイコンを追加する
-        document.querySelectorAll('.card').forEach(addIcons);
-
-        function addIcons(card) {
-        const attributes = card.getAttribute('data-attribute').split(',');
-        const iconContainer = card.querySelector('.attribute-icons');
-        
-        // 既存のアイコンをクリア
-        iconContainer.innerHTML = '';
-
-        // 各属性に対応するアイコンを追加
-        attributes.forEach(attr => {
-            const iconSrc = iconMap[attr];
-            if (iconSrc) {
-            const img = document.createElement('img');
-            img.src = iconSrc;
-            img.alt = `Attribute ${attr}`;
-            img.classList.add('attribute-icon'); // アイコン用のクラスを追加
-            iconContainer.appendChild(img);
-            }
+            faqCards.forEach(card => {
+                const cardName = card.getAttribute('data-card-name').toLowerCase();
+                if (cardName.includes(filterText)) {
+                    card.classList.add('visible');
+                } else {
+                    card.classList.remove('visible');
+                }
+            });
         });
-        }
-
-        // Enterキーで検索を実行
-        document.getElementById('search-box').addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            filterCards();
-        }
-        });
-
-        // 検索ボタンで検索を実行
-        document.getElementById('search-button').addEventListener('click', filterCards);
-
-        // プルダウンの変更でフィルタリングを実行
-        document.getElementById('attribute-filter').addEventListener('change', filterCards);
-
-        function filterCards() {
-        const searchTerm = document.getElementById('search-box').value.toLowerCase();
-        const selectedAttribute = document.getElementById('attribute-filter').value;
-        const cards = document.querySelectorAll('.card');
-
-        cards.forEach(card => {
-            const name = card.getAttribute('data-name').toLowerCase();
-            const attributes = card.getAttribute('data-attribute').split(',');
-
-            const matchesName = name.includes(searchTerm);
-            const matchesAttribute = selectedAttribute === "" || attributes.includes(selectedAttribute);
-
-            if (matchesName && matchesAttribute) {
-            card.style.display = ''; // 表示
-            } else {
-            card.style.display = 'none'; // 非表示
-            }
-        });
-        }
     </script>
       
 
