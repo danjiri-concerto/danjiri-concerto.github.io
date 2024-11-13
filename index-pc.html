@@ -2,20 +2,22 @@
 <html lang="ja">
 <head>
     <script src="/loadHtml.js"></script>
-    <div id="head-placeholder"></div>
     <script>
-        // head.html の読み込み
-        window.addEventListener('DOMContentLoaded', () => {
-            loadHtml("head-placeholder", "/head.html");
+        document.addEventListener("DOMContentLoaded", function() {
+            // スクリーン幅に応じてナビゲーションバーのファイルを指定
+            const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
+            
+            // navbarファイルの読み込み
+            fetch(headerFile)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading navbar:", error));
         });
     </script>
-</head>
 <body>
     <div id="navbar-placeholder"></div>
-    <!-- <script>
-        // footer.html の読み込み
-        loadHtml("navbar-placeholder", "/navbar.html");
-    </script> -->
 
     <section id="hero">
         <div class="hero-container">
