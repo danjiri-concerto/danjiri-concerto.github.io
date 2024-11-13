@@ -8,12 +8,29 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/logos/danjiri.png" type="image/png">
     <meta name="google-site-verification" content="Pi44q8qMI93649FodMcUiID0i6rDOn7qTEnQZ6qggtM" />
+
     <script src="/loadHtml.js"></script>
-    <div id="head-placeholder"></div>
+    <!-- <div id="head-placeholder"></div>
     <script>
         // head.html の読み込み
         window.addEventListener('DOMContentLoaded', () => {
             loadHtml("head-placeholder", "/head.html");
+        });
+    </script> -->
+
+    <!-- head.html の内容を直接配置 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // スクリーン幅に応じてナビゲーションバーのファイルを指定
+            const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
+            
+            // navbarファイルの読み込み
+            fetch(headerFile)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading navbar:", error));
         });
     </script>
 </head>
