@@ -241,5 +241,15 @@ footer p {
     margin: 0;
 }
 
-.faq-card { display: none; border: 1px solid #ddd; padding: 20px; margin: 10px 0; }
-.faq-card.visible { display: block; }
+.question {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.faq-item { 
+    display: none; 
+    border: 1px solid #ddd; 
+    padding: 15px; 
+    margin: 10px 0; 
+    text-align: left;
+}
+.faq-item.visible { display: block; }

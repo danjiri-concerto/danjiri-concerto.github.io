@@ -35,19 +35,94 @@
         <input type="text" id="filter-input" placeholder="カード名で絞り込み...">
 
         <div id="faq-container">
-            <div class="faq-card" data-card-name="カード1">
-                <h2>カード1の質問</h2>
-                <p>カード1の回答内容...</p>
+            <div class="faq-item" data-card-name="コロニーキャンプ,粉塵バキューマ,先駆者の道標,ブラックホール誘発装置">
+                <p class="question">Q.探査場の山札の上からカードを探査し、「コロニーキャンプ」「粉塵バキューマ」「先駆者の道標」「ブラックホール誘発装置」のいずれかを獲得しました。この場合、獲得時効果は発動しますか。</p>
+                <p><b>A.はい、発動します。</b>「獲得時効果」は探査場の山札の上からの獲得でも効果を発動します。</p>
             </div>
-            <div class="faq-card" data-card-name="カード2">
-                <h2>カード2の質問</h2>
-                <p>カード2の回答内容...</p>
+            <div class="faq-item" data-card-name="コロニーキャンプ,粉塵バキューマ">
+                <p class="question">Q.「粉塵バキューマ」の効果によって「コロニーキャンプ」を獲得しました。この場合、自分の準備場にある表向きのカードを除外する必要がありますか。</p>
+                <p><b>A.はい、1枚除外しなければなりません。</b>「獲得時効果」は探査以外による獲得でも効果が発動します。</p>
             </div>
-            <div class="faq-card" data-card-name="カード3">
-                <h2>カード3の質問</h2>
-                <p>カード3の回答内容...</p>
+            <div class="faq-item" data-card-name="コロニーキャンプ,簡易ワームホール">
+                <p class="question">Q.「簡易ワームホール」の効果によって「コロニーキャンプ」を獲得しました。この場合、自分の準備場にある表向きのカードを除外する必要がありますか。</p>
+                <p><b>A.はい、1枚除外しなければなりません。</b>それによって自分だけ準備場のカード枚数が1枚少なくなりますが、通常通り準備フェイズを続行します。次の準備選択でそのプレイヤーだけドローを選んだ場合、通常通りそのプレイヤーだけ最後に引いたカードを無視し、探査力が半減となるペナルティを被ります。探査順の決定は準備したカードが1枚少ないものとして扱います。</p>
             </div>
-            <!-- 他のFAQカードも同様に追加 -->
+            <div class="faq-item" data-card-name="破れた地図,乙女座銀河団の地図,ゼウスマテリアル">
+                <p class="question">Q.自分の準備場に「破れた地図」「乙女座銀河団の地図」の両方があります。このとき、探査場の列にある「ゼウスマテリアル」の探査コストは2下がりますか。</p>
+                <p><b>A.はい、下がります。</b>「ゼウスマテリアル」の探査コストは2下がり探査コストが6となります。</p>
+            </div>
+            <div class="faq-item" data-card-name="破れた地図,乙女座銀河団の地図">
+                <p class="question">Q.自分の準備場に「破れた地図」や「乙女座銀河団の地図」があります。このとき、探査場の山札からカードを探査する場合も探査コストが1下がりますか。</p>
+                <p><b>A.はい、下がります。</b>「破れた地図」は探査コスト2,8の探査山札の探査コスト、「乙女座銀河団の地図」は探査コスト6の探査山札の探査コストが1下がります。</p>
+            </div>
+            <div class="faq-item" data-card-name="破れた地図,牽引可能コンテナ,乙女座銀河団の地図,ゼウスマテリアル">
+                <p class="question">Q.自分の準備場に「破れた地図」「牽引可能コンテナ」「乙女座銀河団の地図」の3枚があり、「航海安全のお守り」も保持しているため、探査力は8あります。探査コスト8の山札からカードを探査することを選び、「ゼウスマテリアル」を獲得しました。このとき、「ゼウスマテリアル」の探査コストは6であったとみなし、「牽引可能コンテナ」の効果で探査コスト2のカードを追加で探査することは可能ですか。</p>
+                <p><b>A.いいえ、できません。</b>探査時に探査コストが確定するため、「破れた地図」や「乙女座銀河団の地図」が探査山札のコストを下げるのは、探査するカードが確定する前だけです。そのため、「乙女座銀河団の地図」による探査コスト軽減効果は発動せず、「ゼウスマテリアル」は探査コスト7で探査したという扱いになります。</p>
+            </div>
+            <div class="faq-item" data-card-name="レーザー照準器,粉塵バキューマ,簡易ワームホール">
+                <p class="question">Q.他プレイヤーが「レーザー照準器」によって探査コスト4の列にあるカードを選択しました。このとき、「粉塵バキューマ」や「簡易ワームホール」の効果によって、他プレイヤーが予約したカードを獲得することはできますか。</p>
+                <p><b>A.いいえ、できません。</b>ゲームマーケット2024秋頒布バージョンにおける「探査できない」の記述は「獲得できない」が正しいです。</p>
+            </div>
+            <div class="faq-item" data-card-name="気まぐれなドリル,リサイクル装置,鉱石ミキサー,こだわりの操縦桿,核熱ブースター,割れない鏡">
+                <p class="question">Q.「気まぐれなドリル」や「リサイクル装置」でカードを戻して引き直した場合、引き直したカードは「気まぐれなドリル」「リサイクル装置」より後に準備されたカードとして扱われますか。</p>
+                <p><b>A.はい、引き直したカードの方が後に準備されたカードとして扱われます。</b>それによって、自分の準備場にある「鉱石ミキサー」「こだわりの操縦桿」「核熱ブースター」「割れない鏡」など直前直後のカードの参照先が変化する場合もあります。</p>
+            </div>
+            <div class="faq-item" data-card-name="思い出のアルバム,安全装置,妨害電波発生機,スーパーフレア誘発装置,ビッグバンの種">
+                <p class="question">Q.「妨害電波発生機」や「スーパーフレア誘発装置」の効果によって、他プレイヤーの「思い出のアルバム」「安全装置」「ビッグバンの種」のドロー時効果は打ち消されますか。</p>
+                <p><b>A.はい、打ち消されます。</b>「妨害電波発生機」や「スーパーフレア誘発装置」はメリット/デメリットに関わらずドロー時効果を打ち消します。</p>
+            </div>
+            <div class="faq-item" data-card-name="妨害電波発生機,何かの部品,スーパーフレア誘発装置">
+                <p class="question">Q.「何かの部品」のドロー時効果で「妨害電波発生機」や「スーパーフレア誘発装置」を引きました。この場合、他プレイヤーがこのターンにドローしたカードのドロー時効果は打ち消されますか。</p>
+                <p><b>A.はい、打ち消されます。</b>「何かの部品」による同一のドローとして扱われるため、通常通り「妨害電波発生機」や「スーパーフレア誘発装置」の効果は発動します。「何かの部品」を引いたプレイヤーがいた場合、そのプレイヤーが1枚「何かの部品」と同一化するまで、他プレイヤーは「ドロー時効果」の解決を待った方が良いでしょう。</p>
+            </div>
+            <div class="faq-item" data-card-name="簡易ワームホール,ブラックホール発生機">
+                <p class="question">Q.「簡易ワームホール」の効果によって「ブラックホール発生機」を獲得しました。この場合、自分のデッキからカードを最大2枚まで除外してもよいですか。</p>
+                <p><b>A.はい、除外できます。</b>そのプレイヤーが準備場からカードを除外した場合、「簡易ワームホール」で「コロニーキャンプ」を獲得した場合と同様の扱いとなります。そのプレイヤーが山札からカードを除外した場合、その後「簡易ワームホール」の効果でデッキをシャッフルする必要があります。</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
+            <div class="faq-item" data-card-name="カード2">
+                <p class="question">Q.</p>
+                <p>A.</p>
+            </div>
         </div>
     </div>
 
@@ -60,7 +135,7 @@
 
         document.getElementById('filter-input').addEventListener('input', function() {
             const filterText = this.value.toLowerCase();
-            const faqCards = document.querySelectorAll('.faq-card');
+            const faqCards = document.querySelectorAll('.faq-item');
 
             faqCards.forEach(card => {
                 const cardName = card.getAttribute('data-card-name').toLowerCase();
