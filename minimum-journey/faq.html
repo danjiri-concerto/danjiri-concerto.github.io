@@ -30,6 +30,17 @@
         </div>
     </section>
 
+    <input type="text" id="search-box" placeholder="カード名で検索">
+    <button id="search-button">検索</button>
+
+    <select id="attribute-filter">
+        <option value="">すべての属性</option>
+        <option value="1">Fire</option>
+        <option value="2">Water</option>
+        <option value="3">Earth</option>
+        <!-- 他の属性も追加 -->
+    </select>
+
     <div id="faq-list">
         <div class="ques" data-name="cardB" data-attribute="1,2">
           <h3>Card A</h3>
@@ -44,37 +55,65 @@
       
       <input type="text" id="search-box" placeholder="カード名で検索">
       
-      <select id="attribute-filter">
-        <option value="">すべての属性</option>
-        <option value="1">Fire</option>
-        <option value="2">Water</option>
-        <option value="3">Earth</option>
-        <!-- 他の属性も追加 -->
-      </select>
+      
       
     <script>
-        // 属性IDと属性名のマッピング
-        const attributeMap = {
-        1: "fire",
-        2: "water",
-        3: "earth"
+        // 属性IDとアイコン画像ファイルのマッピング
+        const iconMap = {
+        1: "images/fire.png",
+        2: "images/water.png",
+        3: "images/earth.png"
         };
+
+        // 初回実行で各カードにアイコンを追加する
+        document.querySelectorAll('.card').forEach(addIcons);
+
+        function addIcons(card) {
+        const attributes = card.getAttribute('data-attribute').split(',');
+        const iconContainer = card.querySelector('.attribute-icons');
         
-        document.getElementById('search-box').addEventListener('input', filterCards);
+        // 既存のアイコンをクリア
+        iconContainer.innerHTML = '';
+
+        // 各属性に対応するアイコンを追加
+        attributes.forEach(attr => {
+            const iconSrc = iconMap[attr];
+            if (iconSrc) {
+            const img = document.createElement('img');
+            img.src = iconSrc;
+            img.alt = `Attribute ${attr}`;
+            img.classList.add('attribute-icon'); // アイコン用のクラスを追加
+            iconContainer.appendChild(img);
+            }
+        });
+        }
+
+        // Enterキーで検索を実行
+        document.getElementById('search-box').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            filterCards();
+        }
+        });
+
+        // 検索ボタンで検索を実行
+        document.getElementById('search-button').addEventListener('click', filterCards);
+
+        // プルダウンの変更でフィルタリングを実行
         document.getElementById('attribute-filter').addEventListener('change', filterCards);
-        
+
         function filterCards() {
         const searchTerm = document.getElementById('search-box').value.toLowerCase();
         const selectedAttribute = document.getElementById('attribute-filter').value;
         const cards = document.querySelectorAll('.card');
-        
+
         cards.forEach(card => {
             const name = card.getAttribute('data-name').toLowerCase();
             const attributes = card.getAttribute('data-attribute').split(',');
-        
+
             const matchesName = name.includes(searchTerm);
             const matchesAttribute = selectedAttribute === "" || attributes.includes(selectedAttribute);
-        
+
             if (matchesName && matchesAttribute) {
             card.style.display = ''; // 表示
             } else {
