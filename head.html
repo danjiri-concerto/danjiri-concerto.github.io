@@ -1,0 +1,19 @@
+<!-- head.html -->
+<!-- <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<link rel="stylesheet" href="/css/style.css">
+<!-- <link rel="icon" href="/images/logos/danjiri.png" type="/image/png"> -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // スクリーン幅に応じてナビゲーションを読み込む
+        const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
+        
+        fetch(headerFile)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            })
+            .catch(error => console.error("Error loading header:", error));
+    });
+</script>

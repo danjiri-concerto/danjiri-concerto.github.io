@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin-left: 20px;
+}
+
+.no-style-link {
+    color: inherit;        /* 親要素の色を適用 */
+    text-decoration: none; /* 下線を削除 */
+}
+
+.no-style-link:visited {
+    color: inherit;        /* 訪問済みリンクも親要素の色に */
+}
+
+.no-style-link:hover, .no-style-link:focus, .no-style-link:active {
+    color: inherit;        /* ホバーやアクティブ状態でも色を変えない */
+    text-decoration: none; /* 下線を出さない */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+#hero {
+    background-image: url('../images/universe.webp');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+#hero h2 {
+    font-size: 3rem;
+}
+
+.toc {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;    /* ボーダーの色と太さ */
+    text-align: center;
+}
+.toc h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+}
+.toc ul {
+    list-style: none;
+    padding: 0;
+}
+.toc ul li {
+    margin-bottom: 5px;
+}
+
+.toc a {
+    color: inherit; /* 通常のリンク色 */
+    text-decoration: none; /* 下線を消す場合 */
+}
+
+.toc a:hover {
+    color: #007bff; /* ホバー時のリンク色 */
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}
+
+.toc a:visited {
+    color: inherit; /* 訪問済みリンクの色 */
+}
+
+.toc a:active {
+    color: #0056b3; /* アクティブ時のリンク色 */
+}
+
+
+h3 {
+    width: 100%;
+    margin-top: 20px; /* 20pxの余白を追加 */
+}
+
+.inline-image {
+    display: inline-block;  /* 画像をインライン要素として扱う */
+    height: 1em;            /* 画像の高さをフォントサイズに合わせる */
+    width: auto;
+    vertical-align: middle; /* 画像をテキストの中央に揃える */
+    margin: 0;  /* 余白をリセット */
+    padding: 0; /* 内側の余白をリセット */
+    border: none; /* 境界線をリセット */
+    font-size: inherit; /* 親のフォントサイズに基づいてサイズを継承 */
+  }  
+
+.responsive-image {
+    width: 100%;        /* 画像の幅を親要素に合わせる */
+    height: auto;       /* 画像の縦横比を保ちながら自動調整 */
+    max-width: 600px;   /* 最大幅を指定（必要に応じて調整） */
+  }
+  
+
+.content-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.text-container {
+    width: 100%;
+    margin: 50 px auto;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.rounded-box {
+    width: 100%;
+    max-width: 1200px;              /* ボックスの幅 */
+    padding: 20px;             /* 内側の余白 */
+    background-color: #333; /* ボックスの背景色 */
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;    /* ボーダーの色と太さ */
+    border-radius: 15px;       /* 角を丸くする（15px） */
+    text-align: left;        /* テキストを中央揃え */
+}
+
+.rounded-box-text {
+    display: inline-block;      /* ボックスの幅をテキストの幅に合わせる */
+    padding: 20px;         /* 内側の余白を調整 */
+    background-color: #f0f0f0;  /* ボックスの背景色 */
+    border: 2px solid #333;     /* ボーダーの色と太さ */
+    border-radius: 15px;        /* 角を丸くする */
+    text-align: left;           /* テキストを左揃えにする */
+    list-style-position: inside;
+}
+
+#games .game-item {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.toggle-button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+/* トグルコンテンツのスタイル */
+.toggle-content {
+    display: none; /* 初期状態では非表示 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.toggle-content ul {
+    margin: 15px;
+    text-align: left;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* セルの境界線を1本にする */
+}
+
+th, td {
+    border: 1px solid #ddd; /* セルに境界線を追加 */
+    padding: 8px; /* 内側に余白を追加 */
+    text-align: center; /* 左寄せ */
+}
+
+th {
+    background-color: #f2f2f2; /* 見出しの背景色 */
+}
+
+tr:hover {
+    background-color: #f5f5f5; /* 行にホバーしたときの背景色 */
+}
+
+.highlight {
+    color: #ff6347; /* トマト色 */
+    font-weight: bold; /* 太字 */
+}
+
+footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    width: 100%;
+    margin: 0;
+}
+
+.question {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.faq-item { 
+    display: none; 
+    border: 1px solid #ddd; 
+    padding: 15px; 
+    margin: 10px 0; 
+    text-align: left;
+}
+.faq-item.visible { display: block; }

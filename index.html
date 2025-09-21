@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="だんじり協奏曲">
+    <title>だんじり協奏曲</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logos/danjiri.png" type="image/png">
+    <meta name="google-site-verification" content="Pi44q8qMI93649FodMcUiID0i6rDOn7qTEnQZ6qggtM" />
+
+    <script src="/loadHtml.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // スクリーン幅に応じてナビゲーションバーのファイルを指定
+            const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
+            
+            // navbarファイルの読み込み
+            fetch(headerFile)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading navbar:", error));
+        });
+    </script>
+</head>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <section id="hero">
+        <a href="/minimum-journey/index.html" class="no-style-link">
+            <div class="hero-container">
+                <h2>MINIMUM JOURNEY</h2>
+                <p>駆け抜け上等！新時代の宇宙開発競争の覇権を握れ！</p>
+            </div>
+        </a>
+    </section>
+
+    <section id="about">
+        <div class="content-container">
+            <h2>概要</h2>
+            <p>宇宙探査もコスパの時代？！MINIMUM JOURNEY（ミニマムジャーニー）は、カードドローをめぐる駆け引き、オールユニーク効果によるデッキ構築がアツいボードゲームです！</p>
+            <p>詳細は、<a href="/minimum-journey/index.html">ゲームページ</a>をご覧ください！</p>
+        </div>
+    </section>
+
+    <section id="reservation">
+        <div class="content-container">
+            <h2>予約</h2>
+            <p>ゲームマーケット2024秋での予約受付を開始しました！</p>
+            <p>予約は、<a href="https://forms.gle/1CSSiS7bTSsFa1eR8">予約フォーム</a>からお願いします！</p>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div> <!-- footer.html を挿入する場所 -->
+    <script>
+        // footer.html の読み込み
+        loadHtml("footer-placeholder", "/footer.html");
+    </script>
+</body>
+</html>
