@@ -18,17 +18,21 @@ export default function Home() {
 
       <section id="about">
         <div className="content-container">
-          <h2>概要</h2>
-          <p>宇宙探査もコスパの時代？！MINIMUM JOURNEY（ミニマムジャーニー）は、カードドローをめぐる駆け引き、オールユニーク効果によるデッキ構築がアツいボードゲームです！</p>
-          <p>詳細は、<Link href="/minimum-journey">ゲームページ</Link>をご覧ください！</p>
+          <div className="rounded-box">
+            <h2 className="text-center mb-6">概要</h2>
+            <p className="mb-4">宇宙探査もコスパの時代？！MINIMUM JOURNEY（ミニマムジャーニー）は、カードドローをめぐる駆け引き、オールユニーク効果によるデッキ構築がアツいボードゲームです！</p>
+            <p>詳細は、<Link href="/minimum-journey" className="text-blue-400 hover:text-blue-300">ゲームページ</Link>をご覧ください！</p>
+          </div>
         </div>
       </section>
 
       <section id="reservation">
         <div className="content-container">
-          <h2>予約</h2>
-          <p>ゲームマーケット2024秋での予約受付を開始しました！</p>
-          <p>予約は、<a href="https://forms.gle/1CSSiS7bTSsFa1eR8">予約フォーム</a>からお願いします！</p>
+          <div className="rounded-box">
+            <h2 className="text-center mb-6">予約</h2>
+            <p className="mb-4">ゲームマーケット2024秋での予約受付を開始しました！</p>
+            <p>予約は、<a href="https://forms.gle/1CSSiS7bTSsFa1eR8" className="text-blue-400 hover:text-blue-300">予約フォーム</a>からお願いします！</p>
+          </div>
         </div>
       </section>
 
