@@ -6,38 +6,9 @@
     <nav>
         <ul>
             <li><img src="/images/en.png" class="inline-image"> <a href="/index-en.html">En</a></li>
-            <li class="dropdown-mobile">
-                <a href="#" class="dropdown-toggle-mobile" onclick="toggleMobileDropdown(event)">ゲーム ▼</a>
-                <ul class="dropdown-menu-mobile" id="mobile-game-menu">
-                    <li><a href="/minimum-journey/index.html">MINIMUM JOURNEY</a></li>
-                    <li><a href="/i-revolve-therefore-i-am/index.html">我廻る、故に我あり</a></li>
-                </ul>
-            </li>
+            <li><a href="/game.html">ゲーム</a></li>
             <li><a href="/contact.html">お問い合わせ</a></li>
         </ul>
     </nav>
 </header>
 
-<script>
-// モバイル用ドロップダウンメニューの制御
-function toggleMobileDropdown(event) {
-    event.preventDefault();
-    const menu = document.getElementById('mobile-game-menu');
-
-    if (menu.style.display === 'block') {
-        menu.style.display = 'none';
-    } else {
-        menu.style.display = 'block';
-    }
-}
-
-// メニュー以外をクリックしたらメニューを閉じる
-document.addEventListener('click', function(event) {
-    const dropdown = document.querySelector('.dropdown-mobile');
-    const menu = document.getElementById('mobile-game-menu');
-
-    if (dropdown && menu && !dropdown.contains(event.target)) {
-        menu.style.display = 'none';
-    }
-});
-</script>

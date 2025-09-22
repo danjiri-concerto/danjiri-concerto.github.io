@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="だんじり協奏曲 - ゲーム一覧">
+    <title>ゲーム一覧 - だんじり協奏曲</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logos/danjiri.png" type="image/png">
+
+    <script src="/loadHtml.js"></script>
+    <script src="/device-detection.js"></script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <section id="hero">
+        <div class="content-container">
+            <h2>ゲーム一覧</h2>
+        </div>
+    </section>
+
+    <section id="games">
+        <div class="content-container">
+            <div class="game-item">
+                <section id="hero-mj">
+                    <a href="/minimum-journey/index.html" class="no-style-link">
+                        <div class="hero-container">
+                            <h3>MINIMUM JOURNEY</h3>
+                            <p>駆け抜け上等！新時代の宇宙開発競争の覇権を握れ！</p>
+                        </div>
+                    </a>
+                </section>
+            </div>
+
+            <div class="game-item">
+                <section id="hero-revolve">
+                    <a href="/i-revolve-therefore-i-am/index.html" class="no-style-link">
+                        <div class="hero-container">
+                            <h3>我廻る、故に我あり</h3>
+                            <p>回転の美学を極めよ！哲学的パズルゲーム</p>
+                        </div>
+                    </a>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div> <!-- footer.html を挿入する場所 -->
+    <script>
+        // footer.html の読み込み
+        loadHtml("footer-placeholder", "/footer.html");
+    </script>
+</body>
+</html>
