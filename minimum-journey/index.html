@@ -8,19 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="/images/logos/danjiri.png" type="/image/png">
     <script src="/loadHtml.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
-            
-            fetch(headerFile)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("navbar-placeholder").innerHTML = data;
-                })
-                .catch(error => console.error("Error loading header:", error));
-        });
-    </script>
+    <script src="/device-detection.js"></script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -59,8 +47,8 @@
             </div>
 
             <h3>ざっくりしたルール</h3>
-            <p><iframe width="560" height="315" src="https://www.youtube.com/embed/RpM7Neln5NY?si=D1hTdGS6JFNu2thH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-            <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="838" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/eshWt2iifAU" title="【 #ゲムマ2024秋】Minimum Journey 紹介 #shorts" width="471"></iframe></p>
+            <p><iframe class="youtube-video-pc" src="https://www.youtube.com/embed/RpM7Neln5NY?si=D1hTdGS6JFNu2thH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+            <p><iframe class="youtube-shorts-pc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/eshWt2iifAU" title="【 #ゲムマ2024秋】Minimum Journey 紹介 #shorts"></iframe></p>
             <img src="/images/minimum-journey/rules/rule.png" alt="simple rule" class="responsive-image">
             <ol class="rounded-box-text">
                 <li>デッキからカードを引いて探査力を得よう！</li>

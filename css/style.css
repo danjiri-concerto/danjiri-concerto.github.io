@@ -106,6 +106,47 @@ nav a:hover {
     cursor: pointer;
 }
 
+/* モバイル用プルダウンメニューのスタイル */
+.dropdown-mobile {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu-mobile {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu-mobile li {
+    margin: 0;
+}
+
+.dropdown-menu-mobile a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-menu-mobile a:hover {
+    background-color: #555;
+    text-decoration: none;
+}
+
+.dropdown-toggle-mobile {
+    cursor: pointer;
+}
+
 #hero {
     background-image: url('../images/header.webp');
     background-size: cover;
@@ -214,6 +255,34 @@ h3 {
     height: auto;       /* 画像の縦横比を保ちながら自動調整 */
     max-width: 600px;   /* 最大幅を指定（必要に応じて調整） */
   }
+
+/* レスポンシブYouTube動画 */
+.youtube-video-pc {
+    width: 560px;
+    height: 315px;
+}
+
+.youtube-shorts-pc {
+    width: 471px;
+    height: 838px;
+}
+
+/* モバイル用スタイル（768px以下） */
+@media (max-width: 768px) {
+    .youtube-video-pc {
+        width: 100%;
+        height: calc(100vw * 9 / 16); /* 16:9のアスペクト比を維持 */
+        max-width: 560px;
+        max-height: 315px;
+    }
+
+    .youtube-shorts-pc {
+        width: 100%;
+        height: calc(100vw * 16 / 9); /* 9:16のアスペクト比を維持 */
+        max-width: 471px;
+        max-height: 838px;
+    }
+}
   
 
 .content-container {

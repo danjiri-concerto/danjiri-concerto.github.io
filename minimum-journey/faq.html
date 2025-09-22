@@ -8,19 +8,7 @@
     <title>MINIMUM JOURNEY FAQ</title>
     <link rel="icon" href="/images/logos/danjiri.png" type="/image/png">
     <script src="/loadHtml.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
-            
-            fetch(headerFile)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("navbar-placeholder").innerHTML = data;
-                })
-                .catch(error => console.error("Error loading header:", error));
-        });
-    </script>
+    <script src="/device-detection.js"></script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
