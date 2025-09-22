@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="我廻る、故に我あり, I Revolve, Therefore I Am">
+    <title>我廻る、故に我あり</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/logos/danjiri.png" type="/image/png">
+    <script src="/loadHtml.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const headerFile = window.innerWidth <= 768 ? "/navbar-mobile.html" : "/navbar-desktop.html";
+            
+            fetch(headerFile)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+        });
+    </script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <section id="hero-revolve">
+        <div class="hero-revolve-container">
+            <h2>我廻る、故に我あり</h2>
+            <p>我こそが第一人格！自我の境地に達せよ！</p>
+        </div>
+    </section>
+
+    <div class="toc">
+        <ul>
+            <li><a href="#about">概要</a></li>
+            <li><a href="#rule">ルール</a></li>
+            <li><a href="#reservation">予約</a></li>
+            <!-- <li><a href="#error">誤植訂正</a></li> -->
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </div>
+
+    <section id="about">
+        <div class="content-container">
+            <h2>概要</h2>
+            <p>『我廻る、故に我あり』は、精神世界での競争をテーマにしたエンジンビルドと周遊型ワーカープレイスメントのボードゲームです。</p>
+        </div>
+    </section>
+
+    <section id="rule">
+        <div class="content-container">
+            <h2>ルール</h2>
+            <h3>ストーリー</h3>
+            <div class="rounded-box">
+                <p>ーーーあなたは、かつて誰かだったーーー</p>
+                <p>ここは、精神回廊《サイコ・クロイスター》。</p>
+                <p>あなたの精神回廊は迷宮として存在し、その迷宮はあなたを定義する場所である。この迷宮には複数の人格が存在しており、各人格が部屋を廻っている。</p>
+                <p>思考が極致に達したとき、自我が確立され、この輪廻から抜け出せられる。この空間では、いくつかの "解釈" が自我の確立とみなされている。</p>
+                <p>- 無数に散らばった自己の断片を構成すること。</p>
+                <p>- 刹那に追憶し、自己の在り方を発見すること。</p>
+                <p>- 深層心理の最奥に達し、全世界を統合すること。</p>
+                <p>されど、覚えておけ。この世界において、確立可能な自我は一つだけ。自我の確立は、他の自我の喪失を意味する。</p>
+                <p>あなたはここに在り続けるか。それとも、認識の彼方へと越境してしまうか。これは、あなたがあなたであることを証明する、ただ一度の機会である。</p>
+            </div>
+
+            <h3>紹介動画</h3>
+            <p><iframe width="560" height="315" src="https://www.youtube.com/embed/8a5asdzGMEQ?si=tT8qUFz_xvJ8YsKd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+            <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="838" referrerpolicy="strict-origin-when-cross-origin" src="https://youtube.com/embed/k_673J0Jczo" title="我廻る、故に我あり 【 #ゲムマ2025秋 新作】  #shorts" width="471"></iframe></p>
+
+            <h3>詳細ルール</h3>
+            <p>詳細なルールは<a href="https://www.dropbox.com/scl/fi/pwz8kr5cij0nat00suuff/rulebook_web.pdf?rlkey=xuimlfgetq3h8ligst38p1v12&st=huz3xhgg&dl=0">ルールブック</a>をご参照ください！</p>
+        </div>
+    </section>
+
+    <section id="reservation">
+        <div class="content-container">
+            <h2>予約</h2>
+            <p>ゲームマーケット2025秋での予約受付を開始しました！</p>
+            <p>予約は、<a href="https://forms.gle/9Cxh64gR6qLDoUyC8">予約フォーム</a>からお願いします！</p>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="content-container">
+            <h2>FAQ</h2>
+            <p>FAQは、<a href="/i-revolve-therefore-i-am/faq.html">FAQページ</a>でサポートする予定です。</p>
+            <p>FAQにない項目に関しては、<a href="/contact.html">お問い合わせページ</a>よりお問い合わせください。</p>
+        </div>
+    </section>
+
+    <script>
+        function toggleContent(button) {
+            // ボタンの直後の .toggle-content 要素を取得
+            const content = button.nextElementSibling;
+
+            // ボタンのテキスト用のカスタムデータ属性を取得
+            const toggleText = button.getAttribute("data-toggle-text");
+
+            // 取得したコンテンツが .toggle-content クラスを持っているか確認
+            if (content && content.classList.contains("toggle-content")) {
+                // 表示・非表示の切り替え
+                if (content.style.display === "none" || content.style.display === "") {
+                    content.style.display = "block";
+                    button.innerHTML = `▼ ${toggleText}`;
+                } else {
+                    content.style.display = "none";
+                    button.innerHTML = `▶ ${toggleText}`;
+                }
+            } else {
+                console.error("toggle-content 要素が見つかりませんでした。");
+            }
+        }
+    </script>
+
+    <div id="footer-placeholder"></div> <!-- footer.html を挿入する場所 -->
+    <script>
+        // footer.html の読み込み
+        loadHtml("footer-placeholder", "/footer.html");
+    </script>
+</body>
+</html>
