@@ -36,7 +36,7 @@
 
                     faqList.forEach(item => {
                         const div = document.createElement('div');
-                        div.className = 'faq-item';
+                        div.className = 'faq-item visible'; // 初期状態で表示
                         div.dataset.cardName = item.cards.join(',');
                         div.innerHTML = `
                         <p class="question">Q. ${item.question}</p>
@@ -52,12 +52,6 @@
     </div>
 
     <script>
-        // ページが読み込まれた時に全てのFAQ項目を表示
-        document.addEventListener("DOMContentLoaded", function() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => item.classList.add('visible'));
-        });
-
         document.getElementById('filter-input').addEventListener('input', function() {
             const filterText = this.value.toLowerCase();
             const faqCards = document.querySelectorAll('.faq-item');
