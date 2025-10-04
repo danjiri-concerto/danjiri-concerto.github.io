@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!-- <style id="faq-debug-visible">
-  /* 既存CSSで .faq-item が display:none !important 等になっていても上書きする */
-  .faq-item {
-    display: block !important;
-    visibility: visible !important;
-  }
-</style> -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <meta name="description" content="MINIMUM JOURNEY, ミニマムジャーニー, FAQ">
+    <meta name="description" content="我廻る、故に我あり, I Revolve, Therefore I Am, FAQ">
     <title>MINIMUM JOURNEY FAQ</title>
     <link rel="icon" href="/images/logos/danjiri.png" type="/image/png">
     <script src="/loadHtml.js"></script>
@@ -29,6 +22,22 @@
 
     <div class="content-container">
         <h1>FAQ</h1>
+
+        <!-- カテゴリフィルタ -->
+        <div style="margin-bottom: 20px;">
+            <label for="category-filter" style="margin-right: 10px;">カテゴリで絞り込み:</label>
+            <select id="category-filter" style="padding: 5px 10px; font-size: 16px;">
+                <option value="all">すべて</option>
+            </select>
+        </div>
+
+        <!-- カード画像拡大モーダル -->
+        <div id="card-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1000;justify-content:center;align-items:center;" onclick="closeCardModal()">
+            <div style="position:relative;">
+                <button onclick="closeCardModal()" style="position:absolute;top:-40px;right:0;background:white;border:none;font-size:30px;width:40px;height:40px;border-radius:50%;cursor:pointer;line-height:40px;padding:0;">×</button>
+                <img id="modal-card-image" src="" style="max-width:90vw;max-height:90vh;border-radius:8px;">
+            </div>
+        </div>
 
         <div id="faq-container">
             <script>
@@ -98,6 +107,7 @@
                         // ガードを一時的に弱める（原因特定のため空でも描画する）
                         const faqDiv = document.createElement('div');
                         faqDiv.className = 'faq-item';
+                        faqDiv.setAttribute('data-category', clean(faq.category) || '');
                         faqDiv.style.marginBottom = '30px';
                         faqDiv.style.padding = '20px';
                         faqDiv.style.backgroundColor = '#f9f9f9';
@@ -117,22 +127,33 @@
                         const SKIP_CARDS_AND_IMAGES = false;
 
                         if (!SKIP_CARDS_AND_IMAGES) {
+                        // card_ids と add_display_ids を統合して画像表示
+                        const allImageIds = [];
+
                         if (clean(faq.card_ids)) {
                             const cardIds = clean(faq.card_ids).split(',').map(s => s.trim()).filter(Boolean);
-                            html += `<div style="margin-top: 15px;"><strong>関連カード名:</strong> ${
-                            cardIds.map(id => cardMap.get(id) || `No.${id}`).join('、')
-                            }</div>`;
+                            // card_ids の画像も追加
+                            allImageIds.push(...cardIds);
                         }
 
                         if (clean(faq.add_display_ids)) {
                             const imageIds = clean(faq.add_display_ids).split(',').map(s => s.trim()).filter(Boolean);
-                            if (imageIds.length) {
+                            allImageIds.push(...imageIds);
+                        }
+
+                        // 統合した画像を表示
+                        if (allImageIds.length) {
                             html += `<div style="margin-top:15px;display:flex;flex-wrap:wrap;gap:10px;">`;
-                            imageIds.forEach(id => {
-                                html += `<img src="/images/i-revolve-therefore-i-am/cards/${id}.png" alt="カード ${id}" style="max-width:200px;height:auto;border-radius:4px;">`;
+                            allImageIds.forEach(id => {
+                                // IDが数字から始まる場合は縦長（63x88）、英字から始まる場合は横長（88x63）
+                                const isVertical = /^\d/.test(id);
+                                const width = isVertical ? 126 : 176;
+                                const height = isVertical ? 176 : 126;
+                                html += `<img src="/images/i-revolve-therefore-i-am/cards/${id}.png" alt="カード ${id}"
+                                    style="width:${width}px;height:${height}px;border-radius:4px;cursor:pointer;"
+                                    onclick="openCardModal('/images/i-revolve-therefore-i-am/cards/${id}.png', ${isVertical})">`;
                             });
                             html += `</div>`;
-                            }
                         }
                         } else {
                         html += `<div style="margin-top:10px;color:#999">[カード/画像処理は一時停止中]</div>`;
@@ -151,6 +172,49 @@
                     console.log(`ステップ9: 追加=${count}件 / エラー=${errors}件 / （カード画像処理停止:${false}）`);
 
                     console.log('container.children.length:', container.children.length);
+
+                    // カテゴリ一覧を収集してドロップダウンに追加
+                    const categories = new Set();
+                    faqData.forEach(faq => {
+                        const cat = clean(faq.category);
+                        if (cat) {
+                            // カンマ区切りの場合も対応
+                            cat.split(',').forEach(c => {
+                                const trimmed = c.trim();
+                                if (trimmed) categories.add(trimmed);
+                            });
+                        }
+                    });
+
+                    const filterSelect = document.getElementById('category-filter');
+                    Array.from(categories).sort().forEach(cat => {
+                        const option = document.createElement('option');
+                        option.value = cat;
+                        option.textContent = cat;
+                        filterSelect.appendChild(option);
+                    });
+
+                    // フィルタ変更時のイベントリスナー
+                    filterSelect.addEventListener('change', function() {
+                        const selectedCategory = this.value;
+                        const allFaqItems = document.querySelectorAll('.faq-item');
+
+                        allFaqItems.forEach(item => {
+                            const itemCategory = item.getAttribute('data-category');
+
+                            if (selectedCategory === 'all') {
+                                item.classList.remove('is_hidden');
+                            } else {
+                                // カンマ区切りカテゴリに対応
+                                const categories = itemCategory.split(',').map(c => c.trim());
+                                if (categories.includes(selectedCategory)) {
+                                    item.classList.remove('is_hidden');
+                                } else {
+                                    item.classList.add('is_hidden');
+                                }
+                            }
+                        });
+                    });
                     // console.log('container.innerHTML:', container.innerHTML);
                 }
 
@@ -227,6 +291,29 @@
     <script>
         // footer.html の読み込み
         loadHtml("footer-placeholder", "/footer.html");
+
+        // カード画像モーダル関数
+        function openCardModal(imageSrc, isVertical) {
+            event.stopPropagation();
+            const modal = document.getElementById('card-modal');
+            const img = document.getElementById('modal-card-image');
+            img.src = imageSrc;
+
+            // 縦長か横長かに応じて最大サイズを調整
+            if (isVertical) {
+                img.style.maxWidth = '50vw';
+                img.style.maxHeight = '90vh';
+            } else {
+                img.style.maxWidth = '90vw';
+                img.style.maxHeight = '50vh';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeCardModal() {
+            document.getElementById('card-modal').style.display = 'none';
+        }
     </script>
 </body>
 </html>
