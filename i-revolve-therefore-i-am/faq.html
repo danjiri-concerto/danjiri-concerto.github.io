@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="MINIMUM JOURNEY, ミニマムジャーニー, FAQ">
+    <title>MINIMUM JOURNEY FAQ</title>
+    <link rel="icon" href="/images/logos/danjiri.png" type="/image/png">
+    <script src="/loadHtml.js"></script>
+    <script src="/device-detection.js"></script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <section id="hero-revolve">
+        <div class="hero-revolve-container">
+            <h2>我廻る、故に我あり</h2>
+            <p>我こそが第一人格！自我の境地に達せよ！</p>
+        </div>
+    </section>
+
+    <div class="content-container">
+        <h1>FAQ</h1>
+
+        <div id="faq-container">
+            <script>
+                async function loadFAQ() {
+                    try {
+                        // CSVファイルを読み込み
+                        const [faqResponse, cardResponse] = await Promise.all([
+                            fetch('data/faq.csv'),
+                            fetch('data/card.csv')
+                        ]);
+
+                        const faqText = await faqResponse.text();
+                        const cardText = await cardResponse.text();
+
+                        // CSVをパース
+                        const faqData = parseCSV(faqText);
+                        const cardData = parseCSV(cardText);
+
+                        // カードIDから名前を取得するマップを作成
+                        const cardMap = new Map();
+                        cardData.forEach(row => {
+                            if (row.card_id && row.id_name) {
+                                cardMap.set(row.card_id, row.id_name);
+                            }
+                        });
+
+                        // FAQコンテナを取得
+                        const container = document.getElementById('faq-container');
+
+                        // 各FAQを表示
+                        faqData.forEach(faq => {
+                            if (!faq.question || !faq.answer) return;
+
+                            const faqDiv = document.createElement('div');
+                            faqDiv.className = 'faq-item';
+                            faqDiv.style.marginBottom = '30px';
+                            faqDiv.style.padding = '20px';
+                            faqDiv.style.backgroundColor = '#f9f9f9';
+                            faqDiv.style.borderRadius = '8px';
+
+                            let html = '';
+
+                            // カテゴリ表示
+                            if (faq.category) {
+                                html += `<div style="font-weight: bold; color: #666; margin-bottom: 10px;">カテゴリ: ${faq.category}</div>`;
+                            }
+
+                            // 質問表示
+                            html += `<div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px;">Q. ${faq.question}</div>`;
+
+                            // 回答表示
+                            html += `<div style="margin-bottom: 15px;">A. ${faq.answer}</div>`;
+
+                            // 関連カード名表示
+                            if (faq.card_ids && faq.card_ids.trim()) {
+                                const cardIds = faq.card_ids.split(',').map(id => id.trim()).filter(id => id);
+                                if (cardIds.length > 0) {
+                                    html += `<div style="margin-top: 15px;"><strong>関連カード名:</strong> `;
+                                    const cardNames = cardIds.map(id => cardMap.get(id) || `No.${id}`);
+                                    html += cardNames.join('、');
+                                    html += `</div>`;
+                                }
+                            }
+
+                            // 追加画像表示
+                            if (faq.add_display_ids && faq.add_display_ids.trim()) {
+                                const imageIds = faq.add_display_ids.split(',').map(id => id.trim()).filter(id => id);
+                                if (imageIds.length > 0) {
+                                    html += `<div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">`;
+                                    imageIds.forEach(id => {
+                                        html += `<img src="images/i-revolve-therefore-i-am/cards/${id}.png" alt="カード ${id}" style="max-width: 200px; height: auto; border-radius: 4px;">`;
+                                    });
+                                    html += `</div>`;
+                                }
+                            }
+
+                            faqDiv.innerHTML = html;
+                            container.appendChild(faqDiv);
+                        });
+
+                    } catch (error) {
+                        console.error('FAQの読み込みに失敗しました:', error);
+                        document.getElementById('faq-container').innerHTML = '<p>FAQの読み込みに失敗しました。</p>';
+                    }
+                }
+
+                // CSVパース関数
+                function parseCSV(text) {
+                    const lines = text.split('\n');
+                    const headers = lines[0].split(',').map(h => h.trim());
+                    const data = [];
+
+                    for (let i = 1; i < lines.length; i++) {
+                        if (!lines[i].trim()) continue;
+
+                        const values = parseCSVLine(lines[i]);
+                        const row = {};
+                        headers.forEach((header, index) => {
+                            row[header] = values[index] || '';
+                        });
+                        data.push(row);
+                    }
+
+                    return data;
+                }
+
+                // CSV行をパース（ダブルクォートで囲まれたカンマを考慮）
+                function parseCSVLine(line) {
+                    const values = [];
+                    let current = '';
+                    let inQuotes = false;
+
+                    for (let i = 0; i < line.length; i++) {
+                        const char = line[i];
+
+                        if (char === '"') {
+                            inQuotes = !inQuotes;
+                        } else if (char === ',' && !inQuotes) {
+                            values.push(current.trim());
+                            current = '';
+                        } else {
+                            current += char;
+                        }
+                    }
+                    values.push(current.trim());
+
+                    return values;
+                }
+
+                loadFAQ();
+            </script>
+        </div>
+    </div>
+      
+
+    <div id="footer-placeholder"></div> <!-- footer.html を挿入する場所 -->
+    <script>
+        // footer.html の読み込み
+        loadHtml("footer-placeholder", "/footer.html");
+    </script>
+</body>
+</html>
