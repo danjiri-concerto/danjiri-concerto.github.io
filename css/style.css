@@ -427,10 +427,10 @@ footer p {
     margin-bottom: 10px;
 }
 .faq-item { 
-    display: none; 
+    display: block; 
     border: 1px solid #ddd; 
     padding: 15px; 
     margin: 10px 0; 
     text-align: left;
 }
-.faq-item.visible { display: block; }
+.faq-item.is_hidden { display: none; }

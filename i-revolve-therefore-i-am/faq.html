@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
+<!-- <style id="faq-debug-visible">
+  /* 既存CSSで .faq-item が display:none !important 等になっていても上書きする */
+  .faq-item {
+    display: block !important;
+    visibility: visible !important;
+  }
+</style> -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,92 +33,131 @@
         <div id="faq-container">
             <script>
                 async function loadFAQ() {
-                    try {
-                        // CSVファイルを読み込み
-                        const [faqResponse, cardResponse] = await Promise.all([
-                            fetch('data/faq.csv'),
-                            fetch('data/card.csv')
-                        ]);
+                    console.log('ステップ1: 読み込み開始');
 
-                        const faqText = await faqResponse.text();
-                        const cardText = await cardResponse.text();
+                    console.log('ステップ2: fetch開始');
+                    const res1 = await fetch('./data/faq.csv');
+                    const res2 = await fetch('./data/card.csv');
 
-                        // CSVをパース
-                        const faqData = parseCSV(faqText);
-                        const cardData = parseCSV(cardText);
-
-                        // カードIDから名前を取得するマップを作成
-                        const cardMap = new Map();
-                        cardData.forEach(row => {
-                            if (row.card_id && row.id_name) {
-                                cardMap.set(row.card_id, row.id_name);
-                            }
-                        });
-
-                        // FAQコンテナを取得
-                        const container = document.getElementById('faq-container');
-
-                        // 各FAQを表示
-                        faqData.forEach(faq => {
-                            if (!faq.question || !faq.answer) return;
-
-                            const faqDiv = document.createElement('div');
-                            faqDiv.className = 'faq-item';
-                            faqDiv.style.marginBottom = '30px';
-                            faqDiv.style.padding = '20px';
-                            faqDiv.style.backgroundColor = '#f9f9f9';
-                            faqDiv.style.borderRadius = '8px';
-
-                            let html = '';
-
-                            // カテゴリ表示
-                            if (faq.category) {
-                                html += `<div style="font-weight: bold; color: #666; margin-bottom: 10px;">カテゴリ: ${faq.category}</div>`;
-                            }
-
-                            // 質問表示
-                            html += `<div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px;">Q. ${faq.question}</div>`;
-
-                            // 回答表示
-                            html += `<div style="margin-bottom: 15px;">A. ${faq.answer}</div>`;
-
-                            // 関連カード名表示
-                            if (faq.card_ids && faq.card_ids.trim()) {
-                                const cardIds = faq.card_ids.split(',').map(id => id.trim()).filter(id => id);
-                                if (cardIds.length > 0) {
-                                    html += `<div style="margin-top: 15px;"><strong>関連カード名:</strong> `;
-                                    const cardNames = cardIds.map(id => cardMap.get(id) || `No.${id}`);
-                                    html += cardNames.join('、');
-                                    html += `</div>`;
-                                }
-                            }
-
-                            // 追加画像表示
-                            if (faq.add_display_ids && faq.add_display_ids.trim()) {
-                                const imageIds = faq.add_display_ids.split(',').map(id => id.trim()).filter(id => id);
-                                if (imageIds.length > 0) {
-                                    html += `<div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">`;
-                                    imageIds.forEach(id => {
-                                        html += `<img src="images/i-revolve-therefore-i-am/cards/${id}.png" alt="カード ${id}" style="max-width: 200px; height: auto; border-radius: 4px;">`;
-                                    });
-                                    html += `</div>`;
-                                }
-                            }
-
-                            faqDiv.innerHTML = html;
-                            container.appendChild(faqDiv);
-                        });
-
-                    } catch (error) {
-                        console.error('FAQの読み込みに失敗しました:', error);
-                        document.getElementById('faq-container').innerHTML = '<p>FAQの読み込みに失敗しました。</p>';
+                    if (!res1.ok || !res2.ok) {
+                        console.error('エラー: 読み込み失敗');
+                        return;
                     }
+
+                    console.log('ステップ3: text変換開始');
+                    const faqText = await res1.text();
+                    const cardText = await res2.text();
+
+                    console.log('ステップ4: パース開始');
+                    const faqData = parseCSV(faqText);
+                    const cardData = parseCSV(cardText);
+
+                    console.log(`ステップ5: FAQ ${faqData.length}件、カード ${cardData.length}件`);
+
+                    // カードIDから名前を取得するマップを作成
+                    const cardMap = new Map();
+                    cardData.forEach(row => {
+                        if (row.card_id && row.id_name) {
+                            cardMap.set(row.card_id, row.id_name);
+                        }
+                    });
+
+                    console.log('ステップ6: カードマップ完了');
+
+                    const container = document.getElementById('faq-container');
+                    console.log('ステップ7: container取得:', container);
+
+                    console.log('ステップ8: FAQループ開始（try/catch で詳細デバッグ）');
+
+                    const clean = (s) => (s ?? '')
+                    .replace(/\u200B/g, '')
+                    .replace(/\uFEFF/g, '')
+                    .replace(/\r/g, '')
+                    .trim();
+
+                    let count = 0;
+                    let skipped = 0;
+                    let errors = 0;
+
+                    faqData.forEach((faq, idx) => {
+                    try {
+                        // まずそのレコードの素の状態をログ（先頭の数件だけ冗長に）
+                        if (idx < 5) {
+                        console.log(`[ROW ${idx+2}] raw:`, {
+                            category: faq.category,
+                            question: faq.question,
+                            answer: faq.answer,
+                            card_ids: faq.card_ids,
+                            add_display_ids: faq.add_display_ids
+                        });
+                        }
+
+                        const q = clean(faq.question);
+                        const a = clean(faq.answer);
+
+                        // ガードを一時的に弱める（原因特定のため空でも描画する）
+                        const faqDiv = document.createElement('div');
+                        faqDiv.className = 'faq-item';
+                        faqDiv.style.marginBottom = '30px';
+                        faqDiv.style.padding = '20px';
+                        faqDiv.style.backgroundColor = '#f9f9f9';
+                        faqDiv.style.borderRadius = '8px';
+
+                        let html = '';
+
+                        if (clean(faq.category)) {
+                        html += `<div style="font-weight:bold;color:#666;margin-bottom:10px;">カテゴリ: ${clean(faq.category)}</div>`;
+                        }
+
+                        html += `<div style="font-weight:bold;font-size:1.1em;margin-bottom:10px;">Q. ${q || '<span style="color:#b00">[EMPTY]</span>'}</div>`;
+                        html += `<div style="margin-bottom:15px;">A. ${a || '<span style="color:#b00">[EMPTY]</span>'}</div>`;
+
+                        // ここで cardIds / imageIds の処理による例外可能性を切り分けるため、
+                        // まずは無効化スイッチを用意（true ならスキップ）
+                        const SKIP_CARDS_AND_IMAGES = false;
+
+                        if (!SKIP_CARDS_AND_IMAGES) {
+                        if (clean(faq.card_ids)) {
+                            const cardIds = clean(faq.card_ids).split(',').map(s => s.trim()).filter(Boolean);
+                            html += `<div style="margin-top: 15px;"><strong>関連カード名:</strong> ${
+                            cardIds.map(id => cardMap.get(id) || `No.${id}`).join('、')
+                            }</div>`;
+                        }
+
+                        if (clean(faq.add_display_ids)) {
+                            const imageIds = clean(faq.add_display_ids).split(',').map(s => s.trim()).filter(Boolean);
+                            if (imageIds.length) {
+                            html += `<div style="margin-top:15px;display:flex;flex-wrap:wrap;gap:10px;">`;
+                            imageIds.forEach(id => {
+                                html += `<img src="/images/i-revolve-therefore-i-am/cards/${id}.png" alt="カード ${id}" style="max-width:200px;height:auto;border-radius:4px;">`;
+                            });
+                            html += `</div>`;
+                            }
+                        }
+                        } else {
+                        html += `<div style="margin-top:10px;color:#999">[カード/画像処理は一時停止中]</div>`;
+                        }
+
+                        faqDiv.innerHTML = html;
+                        container.appendChild(faqDiv);
+
+                        count++;
+                    } catch (e) {
+                        errors++;
+                        console.error(`[ERROR] 行${idx+2} で例外`, e, 'レコード:', faq);
+                    }
+                    });
+
+                    console.log(`ステップ9: 追加=${count}件 / エラー=${errors}件 / （カード画像処理停止:${false}）`);
+
+                    console.log('container.children.length:', container.children.length);
+                    // console.log('container.innerHTML:', container.innerHTML);
                 }
 
                 // CSVパース関数
                 function parseCSV(text) {
                     const lines = text.split('\n');
-                    const headers = lines[0].split(',').map(h => h.trim());
+                    const headers = parseCSVLine(lines[0]).map(h => h.trim());
                     const data = [];
 
                     for (let i = 1; i < lines.length; i++) {
@@ -120,7 +166,7 @@
                         const values = parseCSVLine(lines[i]);
                         const row = {};
                         headers.forEach((header, index) => {
-                            row[header] = values[index] || '';
+                            row[header] = values[index] ? values[index].trim() : '';
                         });
                         data.push(row);
                     }
@@ -136,23 +182,43 @@
 
                     for (let i = 0; i < line.length; i++) {
                         const char = line[i];
+                        const nextChar = line[i + 1];
 
-                        if (char === '"') {
+                        if (char === '"' && nextChar === '"' && inQuotes) {
+                            // エスケープされたダブルクォート
+                            current += '"';
+                            i++; // 次の文字をスキップ
+                        } else if (char === '"') {
                             inQuotes = !inQuotes;
                         } else if (char === ',' && !inQuotes) {
-                            values.push(current.trim());
+                            values.push(current);
                             current = '';
                         } else {
                             current += char;
                         }
                     }
-                    values.push(current.trim());
+                    values.push(current);
 
                     return values;
                 }
 
                 loadFAQ();
             </script>
+
+            <script>
+            // DEBUG①: loadFAQ実行後に、実際に何件描画されたか確認
+            (async () => {
+                // loadFAQは即時実行されているので、描画が走り終わるまでイベントループ1回分待機
+                await new Promise(r => setTimeout(r, 0));
+
+                const container = document.getElementById('faq-container');
+                const items = container.querySelectorAll('.faq-item');
+
+                console.log('描画された .faq-item 件数:', items.length);
+                console.log('最初の .faq-item DOM:', items[0]);
+            })();
+            </script>
+
         </div>
     </div>
       

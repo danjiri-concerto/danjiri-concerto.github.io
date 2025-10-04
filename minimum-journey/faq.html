@@ -59,9 +59,9 @@
             faqCards.forEach(card => {
                 const cardName = card.getAttribute('data-card-name').toLowerCase();
                 if (cardName.includes(filterText)) {
-                    card.classList.add('visible');
+                    card.classList.remove('is_hidden');
                 } else {
-                    card.classList.remove('visible');
+                    card.classList.add('is_hidden');
                 }
             });
         });
