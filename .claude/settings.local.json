@@ -4,7 +4,8 @@
       "Bash(python3 -m http.server 8001)",
       "Bash(curl -s http://localhost:8001/)",
       "Bash(kill %1)",
-      "WebFetch(domain:gamemarket.jp)"
+      "WebFetch(domain:gamemarket.jp)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
