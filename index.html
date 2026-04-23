@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="だんじり協奏曲">
+    <meta name="description" content="だんじり協奏曲 — ボードゲーム制作サークル。MINIMUM JOURNEY・我廻る、故に我ありを制作。">
     <title>だんじり協奏曲</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/logos/danjiri.png" type="image/png">
     <meta name="google-site-verification" content="Pi44q8qMI93649FodMcUiID0i6rDOn7qTEnQZ6qggtM" />
-
     <script src="/loadHtml.js"></script>
     <script src="/device-detection.js"></script>
-</head>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -19,7 +17,7 @@
     <section id="hero">
         <div class="content-container">
             <h2>だんじり協奏曲</h2>
-            <!-- <p>ボードゲーム制作サークル</p> -->
+            <p>ボードゲーム制作サークル</p>
         </div>
     </section>
 
@@ -27,33 +25,74 @@
         <div class="content-container">
             <h2>ゲーム一覧</h2>
 
-            <div class="game-item">
-                <section id="hero-mj">
-                    <a href="/minimum-journey/index.html" class="no-style-link">
-                        <div class="hero-container">
-                            <h3>MINIMUM JOURNEY</h3>
-                            <p>駆け抜け上等！新時代の宇宙開発競争の覇権を握れ！</p>
-                        </div>
-                    </a>
-                </section>
+            <!-- MINIMUM JOURNEY + 拡張セット -->
+            <div class="game-group">
+                <div class="game-item">
+                    <section id="hero-mj">
+                        <a href="/minimum-journey/index.html" class="no-style-link">
+                            <div class="hero-container">
+                                <h3>MINIMUM JOURNEY</h3>
+                                <p>駆け抜け上等！新時代の宇宙開発競争の覇権を握れ！</p>
+                            </div>
+                        </a>
+                    </section>
+                </div>
+
+                <div class="expansion-group">
+                    <p class="expansion-group-label">拡張セット</p>
+                    <div class="expansion-cards">
+
+                        <a href="https://gamemarket.jp/game/187920" class="expansion-card" target="_blank" rel="noopener noreferrer">
+                            <img src="/images/minimum-journey/thumbnails/thumbnail_abyss.png" alt="MINIMUM JOURNEY -ABYSS-">
+                            <div class="expansion-card-body">
+                                <span class="expansion-badge">拡張</span>
+                                <h4>MINIMUM JOURNEY -ABYSS-</h4>
+                                <p class="expansion-tagline">タイパの宇宙探査、深淵へ</p>
+                                <p class="expansion-desc">恒星の光すら届かない深淵へ。未知の遺物と法則が待ち受ける深宇宙探査の拡張セット。</p>
+                                <ul class="expansion-specs">
+                                    <li>3〜6人</li>
+                                    <li>20〜40分</li>
+                                    <li>2026春</li>
+                                </ul>
+                            </div>
+                        </a>
+
+                        <a href="https://gamemarket.jp/game/187921" class="expansion-card" target="_blank" rel="noopener noreferrer">
+                            <img src="/images/minimum-journey/thumbnails/thumbnail_blur.png" alt="MINIMUM JOURNEY -BLUR-">
+                            <div class="expansion-card-body">
+                                <span class="expansion-badge">拡張</span>
+                                <h4>MINIMUM JOURNEY -BLUR-</h4>
+                                <p class="expansion-tagline">予測不能を、使いこなせ</p>
+                                <p class="expansion-desc">毎ラウンド異なるイベントカードが盤面を揺さぶる。予測不能な状況を読み解く拡張セット。</p>
+                                <ul class="expansion-specs">
+                                    <li>3〜6人</li>
+                                    <li>20〜40分</li>
+                                    <li>2026春</li>
+                                </ul>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
             </div>
 
+            <!-- 我廻る、故に我あり -->
             <div class="game-item">
                 <section id="hero-revolve">
                     <a href="/i-revolve-therefore-i-am/index.html" class="no-style-link">
                         <div class="hero-container">
                             <h3>我廻る、故に我あり</h3>
-                            <p>回転の美学を極めよ！哲学的パズルゲーム</p>
+                            <p>我こそが第一人格！自我の境地に達せよ！</p>
                         </div>
                     </a>
                 </section>
             </div>
+
         </div>
     </section>
 
-    <div id="footer-placeholder"></div> <!-- footer.html を挿入する場所 -->
+    <div id="footer-placeholder"></div>
     <script>
-        // footer.html の読み込み
         loadHtml("footer-placeholder", "/footer.html");
     </script>
 </body>

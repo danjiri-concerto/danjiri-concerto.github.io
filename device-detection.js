@@ -1,17 +1,10 @@
-// device-detection.js - デバイス判別とページ振り分け機能
+// device-detection.js
 
-// デバイス判別関数
 function isMobileDevice() {
-    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return window.innerWidth <= 768 ||
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
-// ページ振り分け関数（現在は使用しない - ナビゲーションのみで判別）
-function redirectToDeviceSpecificPage() {
-    // ナビゲーションバー以外は出し分けしないため、何もしない
-    return;
-}
-
-// ナビゲーションバー読み込み関数
 function loadDeviceSpecificNavbar() {
     const isMobile = isMobileDevice();
     const headerFile = isMobile ? "/navbar-mobile.html" : "/navbar-desktop.html";
@@ -20,15 +13,37 @@ function loadDeviceSpecificNavbar() {
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+            if (isMobile) {
+                initMobileNav();
+            }
         })
         .catch(error => console.error("Error loading navbar:", error));
 }
 
-// ページ読み込み時に実行
-document.addEventListener("DOMContentLoaded", function() {
-    // ページ振り分けを実行
-    redirectToDeviceSpecificPage();
+function initMobileNav() {
+    const btn = document.getElementById("hamburger-btn");
+    const nav = document.getElementById("mobile-nav");
+    if (!btn || !nav) return;
 
-    // ナビゲーションバーを読み込み
+    btn.addEventListener("click", () => {
+        const isOpen = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!isOpen));
+        nav.setAttribute("aria-hidden", String(isOpen));
+        btn.classList.toggle("is-open", !isOpen);
+        nav.classList.toggle("is-open", !isOpen);
+    });
+
+    // リンククリックでメニューを閉じる
+    nav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            btn.setAttribute("aria-expanded", "false");
+            nav.setAttribute("aria-hidden", "true");
+            btn.classList.remove("is-open");
+            nav.classList.remove("is-open");
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
     loadDeviceSpecificNavbar();
 });
