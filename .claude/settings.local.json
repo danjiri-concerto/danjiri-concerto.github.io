@@ -5,7 +5,11 @@
       "Bash(curl -s http://localhost:8001/)",
       "Bash(kill %1)",
       "WebFetch(domain:gamemarket.jp)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s http://localhost:8001/minimum-journey/index.html)",
+      "Bash(curl -s http://localhost:8001/i-revolve-therefore-i-am/index.html)",
+      "Bash(curl -s http://localhost:8001/minimum-journey-abyss/index.html)",
+      "Bash(curl -s http://localhost:8001/minimum-journey-blur/index.html)"
     ]
   }
 }

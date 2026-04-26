@@ -229,9 +229,10 @@ nav a:hover {
   -webkit-text-stroke: unset;
 }
 
-/* MINIMUM JOURNEY hero */
+/* ── MINIMUM JOURNEY ─────────────────────────── */
+/* ホームページカード用（compact） */
 #hero-mj {
-  background-image: url('../images/minimum-journey/universe.webp');
+  background-image: url('/images/minimum-journey/universe.webp');
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -265,9 +266,27 @@ nav a:hover {
   text-shadow: 0 1px 6px rgba(0,0,0,0.5);
 }
 
-/* 我廻る hero */
+/* ゲームページ用（page-hero モディファイア） */
+#hero-mj.page-hero {
+  background-image: url('/images/minimum-journey/background/bg_pc.png');
+  padding: 0;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#hero-mj.page-hero::after {
+  background: linear-gradient(
+    160deg,
+    rgba(4, 8, 28, 0.55) 0%,
+    rgba(4, 8, 28, 0.70) 60%,
+    rgba(4, 8, 28, 0.82) 100%
+  );
+}
+
+/* ── 我廻る ──────────────────────────────────── */
 #hero-revolve {
-  background-image: url('../images/i-revolve-therefore-i-am/white.webp');
+  background-image: url('/images/i-revolve-therefore-i-am/white.webp');
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -299,6 +318,83 @@ nav a:hover {
   font-weight: 300;
   margin-top: 10px;
   text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+
+#hero-revolve.page-hero {
+  background-image: url('/images/i-revolve-therefore-i-am/background/bg_pc.png');
+  padding: 0;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#hero-revolve.page-hero::after {
+  background: linear-gradient(
+    160deg,
+    rgba(10, 4, 24, 0.50) 0%,
+    rgba(10, 4, 24, 0.68) 60%,
+    rgba(10, 4, 24, 0.82) 100%
+  );
+}
+
+/* =====================================================
+   Hero Lore（ゲームページ内の世界観テキスト）
+   ===================================================== */
+.hero-lore {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 32px;
+  color: #fff;
+}
+
+.hero-lore-eyebrow {
+  font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  margin: 0 0 22px;
+  line-height: 1.7;
+}
+
+.hero-lore-title {
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  line-height: 1.2;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.55);
+  margin: 0 0 24px;
+  /* h2 の下線デコレーションを打ち消す */
+  display: block;
+}
+.hero-lore-title::after {
+  display: none;
+}
+
+.hero-lore-divider {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,0.35);
+  margin: 0 auto 28px;
+}
+
+.hero-lore-quote {
+  font-size: clamp(0.95rem, 2vw, 1.12rem);
+  font-weight: 300;
+  line-height: 2;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+  margin: 0 0 20px;
+}
+
+.hero-lore-tagline {
+  font-size: clamp(0.78rem, 1.5vw, 0.9rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.07em;
+  margin: 0;
 }
 
 /* =====================================================
@@ -864,6 +960,214 @@ footer p:last-child { margin-bottom: 0; }
 }
 
 /* =====================================================
+   Game Page Theme  (body.page-mj / page-revolve / page-abyss / page-blur)
+   背景画像をページ全体に敷き、コンテンツを半透明カードで乗せる
+   ===================================================== */
+
+/* ── 共通: 固定背景（parallax） ── */
+body.page-mj,
+body.page-revolve,
+body.page-abyss,
+body.page-blur {
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  color: rgba(255,255,255,0.88);
+}
+
+body.page-mj {
+  background-image: url('/images/minimum-journey/background/bg_pc.png');
+  background-color: #04081c;
+}
+body.page-revolve {
+  background-image: url('/images/i-revolve-therefore-i-am/background/bg_pc.png');
+  background-color: #080414;
+}
+body.page-abyss {
+  background-image: url('/images/minimum-journey/background/bg_abyss_pc.png');
+  background-color: #020408;
+}
+body.page-blur {
+  background-image: url('/images/minimum-journey/background/bg_blur_pc.png');
+  background-color: #08040c;
+}
+
+/* ── ヒーローは body の背景を透過して見せる ── */
+body.page-mj #hero-mj.page-hero,
+body.page-revolve #hero-revolve.page-hero,
+body.page-abyss #hero-abyss.page-hero,
+body.page-blur #hero-blur.page-hero {
+  background-image: none;
+  background-color: transparent;
+}
+
+/* ── テキスト色（全ダークゲームページ共通） ── */
+body.page-mj h2, body.page-mj h3,
+body.page-revolve h2, body.page-revolve h3,
+body.page-abyss h2, body.page-abyss h3,
+body.page-blur h2, body.page-blur h3 {
+  color: #fff;
+}
+body.page-mj h2::after, body.page-revolve h2::after,
+body.page-abyss h2::after, body.page-blur h2::after {
+  background: rgba(255,255,255,0.3);
+}
+body.page-mj h3, body.page-revolve h3,
+body.page-abyss h3, body.page-blur h3 {
+  color: rgba(255,255,255,0.78);
+}
+body.page-mj p, body.page-revolve p,
+body.page-abyss p, body.page-blur p {
+  color: rgba(255,255,255,0.82);
+}
+
+/* ── リンク色（暗背景用） ── */
+body.page-mj a, body.page-revolve a,
+body.page-abyss a, body.page-blur a {
+  color: #8fb4ff;
+}
+body.page-mj a:hover, body.page-revolve a:hover,
+body.page-abyss a:hover, body.page-blur a:hover {
+  color: #b8ccff;
+}
+
+/* ── コンテンツカード ── */
+body.page-mj .content-container, body.page-revolve .content-container,
+body.page-abyss .content-container, body.page-blur .content-container {
+  background: rgba(0,0,0,0.55);
+  border-radius: var(--radius);
+  padding: 48px 32px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ── TOC ── */
+body.page-mj .toc, body.page-revolve .toc,
+body.page-abyss .toc, body.page-blur .toc {
+  background: rgba(0,0,0,0.65);
+  border-bottom-color: rgba(255,255,255,0.12);
+}
+
+/* ── ストーリーボックス ── */
+body.page-mj .rounded-box, body.page-revolve .rounded-box,
+body.page-abyss .rounded-box, body.page-blur .rounded-box {
+  background: rgba(255,255,255,0.04);
+  border-left-color: var(--color-accent);
+}
+
+/* ── リストボックス ── */
+body.page-mj .rounded-box-text, body.page-revolve .rounded-box-text,
+body.page-abyss .rounded-box-text, body.page-blur .rounded-box-text {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.85);
+}
+
+/* ── テーブル ── */
+body.page-mj table, body.page-revolve table,
+body.page-abyss table, body.page-blur table { background: transparent; }
+body.page-mj th, body.page-revolve th,
+body.page-abyss th, body.page-blur th {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.12);
+}
+body.page-mj td, body.page-revolve td,
+body.page-abyss td, body.page-blur td {
+  color: rgba(255,255,255,0.82);
+  border-color: rgba(255,255,255,0.08);
+}
+body.page-mj tr:hover, body.page-revolve tr:hover,
+body.page-abyss tr:hover, body.page-blur tr:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+/* ── トグルコンテンツ ── */
+body.page-mj .toggle-content, body.page-revolve .toggle-content,
+body.page-abyss .toggle-content, body.page-blur .toggle-content {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.82);
+}
+
+/* ── FAQ カード ── */
+body.page-mj .faq-item, body.page-revolve .faq-item,
+body.page-abyss .faq-item, body.page-blur .faq-item {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+}
+body.page-mj .faq-item:hover, body.page-revolve .faq-item:hover,
+body.page-abyss .faq-item:hover, body.page-blur .faq-item:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+body.page-mj .question, body.page-revolve .question,
+body.page-abyss .question, body.page-blur .question { color: #fff; }
+
+/* =====================================================
+   スペックリスト・カードギャラリー（拡張ページ共通）
+   ===================================================== */
+.spec-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  justify-content: center;
+  margin: 24px 0 0;
+}
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 10px;
+  padding: 12px 18px;
+  min-width: 90px;
+}
+.spec-label {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em;
+}
+.spec-value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.base-game-note {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+}
+
+.card-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.card-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.card-gallery img:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+/* =====================================================
    Responsive – Mobile (≤ 768px)
    ===================================================== */
 @media (max-width: 768px) {
@@ -923,6 +1227,47 @@ footer p:last-child { margin-bottom: 0; }
   /* ストーリーボックス */
   .rounded-box {
     padding: 20px 18px;
+  }
+
+  /* page-hero: モバイルは高さのみ調整（bg は body から継承） */
+  #hero-mj.page-hero,
+  #hero-revolve.page-hero {
+    min-height: 90vh;
+  }
+
+  /* body 背景: モバイル縦長画像 + fixed 解除（iOS Safari 対応） */
+  body.page-mj {
+    background-image: url('/images/minimum-journey/background/bg_mobile.png');
+    background-attachment: scroll;
+  }
+  body.page-revolve {
+    background-image: url('/images/i-revolve-therefore-i-am/background/bg_mobile.png');
+    background-attachment: scroll;
+  }
+  body.page-abyss {
+    background-image: url('/images/minimum-journey/background/bg_abyss_mobile.png');
+    background-attachment: scroll;
+  }
+  body.page-blur {
+    background-image: url('/images/minimum-journey/background/pc_blur_mobile.png');
+    background-attachment: scroll;
+  }
+
+  .card-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* モバイルのコンテンツカード余白を詰める */
+  body.page-mj .content-container,
+  body.page-revolve .content-container {
+    padding: 32px 16px;
+    border-radius: 10px;
+  }
+  .hero-lore {
+    padding: 48px 20px;
+  }
+  .hero-lore-eyebrow {
+    letter-spacing: 0.14em;
   }
 
   /* ゲームカード: ホバーエフェクト無効（タッチ端末） */
