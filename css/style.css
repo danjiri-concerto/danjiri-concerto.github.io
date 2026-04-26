@@ -138,7 +138,7 @@ nav a:hover {
   min-width: 220px;
   box-shadow: var(--shadow-lg);
   z-index: 200;
-  top: calc(100% + 4px);
+  top: 100%;
   left: 0;
   list-style: none;
   padding: 8px 0;
@@ -539,6 +539,74 @@ nav a:hover {
   border-radius: 20px;
   padding: 2px 10px;
   white-space: nowrap;
+}
+
+/* =====================================================
+   Game Cards（メインゲーム用カード）
+   ===================================================== */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid #e4e4ec;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+  color: var(--color-text);
+}
+#games > .content-container > .game-card {
+  margin-bottom: 32px;
+}
+.game-card-img {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%;
+  overflow: hidden;
+  background: #111;
+  flex-shrink: 0;
+}
+.game-card-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.game-card-body {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.game-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1.3;
+  margin: 0;
+}
+.game-card-tagline {
+  font-size: 0.92rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-style: italic;
+  margin: 0;
+}
+.game-card-desc {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.65;
+  margin: 0;
 }
 
 .hero-container {
@@ -1271,7 +1339,8 @@ body.page-abyss .question, body.page-blur .question { color: #fff; }
   }
 
   /* ゲームカード: ホバーエフェクト無効（タッチ端末） */
-  #games .game-item:hover {
+  #games .game-item:hover,
+  .game-card:hover {
     transform: none;
     box-shadow: var(--shadow-md);
   }

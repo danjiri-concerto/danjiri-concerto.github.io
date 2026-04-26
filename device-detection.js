@@ -15,9 +15,30 @@ function loadDeviceSpecificNavbar() {
             document.getElementById("navbar-placeholder").innerHTML = data;
             if (isMobile) {
                 initMobileNav();
+            } else {
+                initDesktopDropdown();
             }
         })
         .catch(error => console.error("Error loading navbar:", error));
+}
+
+function initDesktopDropdown() {
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        if (!menu) return;
+        let timer;
+        dropdown.addEventListener('mouseenter', () => {
+            clearTimeout(timer);
+            menu.style.display = 'block';
+        });
+        dropdown.addEventListener('mouseleave', () => {
+            timer = setTimeout(() => { menu.style.display = 'none'; }, 120);
+        });
+        menu.addEventListener('mouseenter', () => { clearTimeout(timer); });
+        menu.addEventListener('mouseleave', () => {
+            timer = setTimeout(() => { menu.style.display = 'none'; }, 120);
+        });
+    });
 }
 
 function initMobileNav() {
