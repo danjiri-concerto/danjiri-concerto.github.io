@@ -13,9 +13,7 @@ function loadDeviceSpecificNavbar() {
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
-            if (isMobile) {
-                initMobileNav();
-            } else {
+            if (!isMobile) {
                 initDesktopDropdown();
             }
         })
@@ -41,30 +39,30 @@ function initDesktopDropdown() {
     });
 }
 
-function initMobileNav() {
-    const btn = document.getElementById("hamburger-btn");
-    const nav = document.getElementById("mobile-nav");
-    if (!btn || !nav) return;
-
-    btn.addEventListener("click", () => {
-        const isOpen = btn.getAttribute("aria-expanded") === "true";
-        btn.setAttribute("aria-expanded", String(!isOpen));
-        nav.setAttribute("aria-hidden", String(isOpen));
-        btn.classList.toggle("is-open", !isOpen);
-        nav.classList.toggle("is-open", !isOpen);
-    });
-
-    // リンククリックでメニューを閉じる
-    nav.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            btn.setAttribute("aria-expanded", "false");
-            nav.setAttribute("aria-hidden", "true");
-            btn.classList.remove("is-open");
-            nav.classList.remove("is-open");
-        });
-    });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     loadDeviceSpecificNavbar();
+
+    // イベントデリゲーション: navbar の動的挿入後も確実に動作する
+    document.addEventListener("click", (e) => {
+        // ハンバーガーボタンのトグル
+        if (e.target.closest("#hamburger-btn")) {
+            const btn = document.getElementById("hamburger-btn");
+            const nav = document.getElementById("mobile-nav");
+            if (!btn || !nav) return;
+            const isOpen = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", String(!isOpen));
+            btn.classList.toggle("is-open", !isOpen);
+            nav.classList.toggle("is-open", !isOpen);
+            return;
+        }
+        // モバイルナビのリンクをクリックしたらメニューを閉じる
+        if (e.target.closest("#mobile-nav a")) {
+            const btn = document.getElementById("hamburger-btn");
+            const nav = document.getElementById("mobile-nav");
+            if (!btn || !nav) return;
+            btn.setAttribute("aria-expanded", "false");
+            btn.classList.remove("is-open");
+            nav.classList.remove("is-open");
+        }
+    });
 });
