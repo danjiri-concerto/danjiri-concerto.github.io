@@ -1470,6 +1470,44 @@ body.page-edgeworth .faq-item:hover {
 body.page-edgeworth .question { color: #fff; }
 body.page-edgeworth strong { color: #fff; }
 
+/* ルール解説スライド */
+.rule-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 20px 0 0;
+}
+.rule-steps-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.rule-figure {
+  margin: 20px 0 0;
+}
+.rule-steps .rule-figure {
+  margin: 0;
+}
+.rule-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+.rule-figure figcaption {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+body.page-edgeworth .rule-figure figcaption {
+  color: rgba(255,255,255,0.75);
+}
+.rule-figure figcaption strong {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
 /* 全体像などの単体画像 */
 .game-shot {
   margin: 24px 0 0;
@@ -1483,6 +1521,10 @@ body.page-edgeworth strong { color: #fff; }
 
 @media (max-width: 768px) {
   #hero-edgeworth.page-hero { min-height: 90vh; }
+  .rule-steps,
+  .rule-steps-2 {
+    grid-template-columns: 1fr;
+  }
   body.page-edgeworth { background-attachment: scroll; }
   body.page-edgeworth .content-container {
     padding: 32px 16px;
