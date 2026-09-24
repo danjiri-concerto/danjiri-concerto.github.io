@@ -64,6 +64,16 @@
                 <img src="/images/project-edgeworth/thumbnails/thumbnail_web.png" alt="PROJECT EDGEWORTH 全体像" width="2000" height="1125">
             </div>
 
+            <h3>紹介動画</h3>
+            <div class="video-embed video-embed-vertical">
+                <iframe src="https://www.youtube-nocookie.com/embed/uWnmP7WTEdY"
+                        title="【#ゲムマ2026秋】PROJECT EDGEWORTH"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen></iframe>
+            </div>
+
             <h3>ゲームの目的</h3>
             <p>他組織よりも卓越した通信衛星網を構築すること</p>
             <figure class="rule-figure">
@@ -149,148 +159,6 @@
         </div>
     </section>
 
-    <section id="flow">
-        <div class="content-container">
-            <h2>ゲームの流れ</h2>
-            <p>ゲームは「ラウンド」を単位に進行し、終了条件を満たすまで繰り返します。1ラウンドは<strong>計画フェイズ → アクションフェイズ → 循環フェイズ</strong>の3つで構成されます。</p>
-
-            <div class="toggle-section">
-                <button class="toggle-button" data-toggle-text="計画フェイズ" onclick="toggleContent(this)">▶ 計画フェイズ</button>
-                <div class="toggle-content">
-                    <p>このラウンドに実施するアクションを決めるフェイズです。</p>
-                    <ol>
-                        <li><strong>アクションカードの回収</strong>：横向き（2ラウンド前に選択した）のカードを手札に戻します。縦向きのカードが「I 予算発行」であれば手札に戻し、それ以外は横向きにします。</li>
-                        <li><strong>アクションプロット</strong>：各プレイヤーはアクションカードを1枚選び、手元に裏向きで置きます。</li>
-                        <li><strong>アクション公開</strong>：全員一斉に表向きにします。</li>
-                    </ol>
-                    <p>「予算発行」を除き、基本的に同じアクションを連続したラウンドで選べません。他プレイヤーの状況を観察し、やりたいアクションが実施されるよう仕向けるのがポイントです。</p>
-                </div>
-            </div>
-
-            <div class="toggle-section">
-                <button class="toggle-button" data-toggle-text="アクションフェイズ（I〜V）" onclick="toggleContent(this)">▶ アクションフェイズ（I〜V）</button>
-                <div class="toggle-content">
-                    <p>いずれかのプレイヤーに選ばれたフェイズのみが、ローマ数字の小さい順（I〜V）に実施されます。そのアクションを選んだプレイヤーには「アクション選択ボーナス」が適用されます。</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>フェイズ</th>
-                                <th>メインアクション</th>
-                                <th>アクション選択ボーナス</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>I</td>
-                                <td>予算発行</td>
-                                <td>各プレイヤーは予算の値だけ資金を獲得</td>
-                                <td>追加で6資金</td>
-                            </tr>
-                            <tr>
-                                <td>II</td>
-                                <td>配備</td>
-                                <td>プロジェクトカード1枚を配備コストを支払って衛星に配備</td>
-                                <td>追加で1枚配備、またはカードを1枚ドロー</td>
-                            </tr>
-                            <tr>
-                                <td>III</td>
-                                <td>打ち上げ・転回</td>
-                                <td>全員一斉に打ち上げまたは稼働中の衛星を展開</td>
-                                <td>追加で「転回」または「予算上昇+1」</td>
-                            </tr>
-                            <tr>
-                                <td>IV</td>
-                                <td>通信確立</td>
-                                <td>稼働中の衛星の直下区域にキューブを置き、区域コスト＋先駆コストを支払って通信を確立</td>
-                                <td>進行方向前後の隣接区域まで対象を拡張して、もう一度通信確立</td>
-                            </tr>
-                            <tr>
-                                <td>V</td>
-                                <td>企画</td>
-                                <td>プロジェクトカードを2枚引き、1枚を手札に加え1枚を捨てる</td>
-                                <td>5枚引いて2枚を手札に加え、3枚を捨てる</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="highlight">打ち上げには「非稼働であること」「プロジェクトカードが最低1枚配備されていること」の2条件が必要です。</p>
-                </div>
-            </div>
-
-            <div class="toggle-section">
-                <button class="toggle-button" data-toggle-text="循環フェイズ" onclick="toggleContent(this)">▶ 循環フェイズ</button>
-                <div class="toggle-content">
-                    <p>稼働中の全衛星が「循環」の対象となります。以下の順に処理します。</p>
-                    <ol>
-                        <li><strong>衛星コマの移動</strong>：各衛星は向いている方向に同時に1区域進みます。左右にはみ出す場合は反対側へ回り込み、上下にはみ出す場合は向きを上下にひっくり返す「反射」を行ってから1区域進みます（反射は「転回」ではないため、転回を条件とする効果は発動しません）。</li>
-                        <li><strong>燃料消費</strong>：各衛星は燃料を1消費します。</li>
-                        <li><strong>ニアミス判定</strong>：移動後に同じ区域へ複数の衛星がいる場合、それらは「ニアミス」となり、燃料を2消費します。</li>
-                        <li><strong>着陸／着水判定</strong>：燃料コマが最も上のカードの燃料庫からはみ出した衛星は盤面から取り除かれ、衛星カード上に戻ります。着水（海区域）した場合は10資金を獲得します。</li>
-                    </ol>
-                    <p>循環フェイズ終了時に終了条件が満たされていれば、即座にゲームは終了します。</p>
-                </div>
-            </div>
-
-            <div class="toggle-section">
-                <button class="toggle-button" data-toggle-text="通信確立のコストと条件" onclick="toggleContent(this)">▶ 通信確立のコストと条件</button>
-                <div class="toggle-content">
-                    <p>通信確立可能な区域は、以下をすべて満たす区域です。</p>
-                    <ul>
-                        <li>自身の衛星コマがある区域（カード効果で範囲が拡大されることがあります）</li>
-                        <li>自身の発射拠点コマもキューブも未配置である区域</li>
-                        <li>通信確立コストが支払える区域</li>
-                    </ul>
-                    <p>通信確立コストは次の2つです。</p>
-                    <ul>
-                        <li><strong>区域コスト</strong>：陸区域は 5 マヤ、海区域は 2 マヤ</li>
-                        <li><strong>先駆コスト</strong>：その区域にすでにキューブを置いているプレイヤー全員に、3 マヤずつ支払う</li>
-                    </ul>
-                    <p>勝つためには 8〜10箇所以上の通信確立を目指すとよいでしょう。</p>
-                </div>
-            </div>
-
-            <div class="toggle-section">
-                <button class="toggle-button" data-toggle-text="ゲーム終了条件" onclick="toggleContent(this)">▶ ゲーム終了条件</button>
-                <div class="toggle-content">
-                    <p>ラウンド終了時に以下のいずれかが満たされたらゲーム終了です。</p>
-                    <ul>
-                        <li>いずれかのプレイヤーの衛星が5機とも稼働中である</li>
-                        <li>いずれかのプレイヤーの通信確立数が16である（通信確立用キューブが空になった）</li>
-                    </ul>
-                    <p>終了条件を満たしたプレイヤーは、ゲーム終了時に名声3を獲得します。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="score">
-        <div class="content-container">
-            <h2>得点（名声）</h2>
-            <p>ゲーム終了時、以下の要素の合計が最も高いプレイヤーの勝利です。同点の場合は勝利を分かち合います。</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>要素</th>
-                        <th>獲得名声</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>I</td><td>予算</td><td>予算の値だけ</td></tr>
-                    <tr><td>II</td><td>所持金</td><td>10資金につき 1</td></tr>
-                    <tr><td>III</td><td>通信確立区域</td><td>陸区域は 2、海区域は 1</td></tr>
-                    <tr><td>IV</td><td>通信確立地域種類（A〜H）</td><td>1／3／6／10／15／21／28／36（種類数に応じて）</td></tr>
-                    <tr><td>V</td><td>ミッションカード</td><td>達成状況に応じた名声</td></tr>
-                    <tr><td>VI</td><td>稼働中の衛星</td><td>衛星カード記載の名声</td></tr>
-                    <tr><td>VII</td><td>プロジェクトカード</td><td>稼働中の衛星は記載名声の合計、非稼働は半分（切り捨て）。CREW・DEVICE・SOFTWARE が揃った衛星1機につき +5</td></tr>
-                    <tr><td>VIII</td><td>褒賞カード</td><td>各褒賞の比較内容をプレイヤー間で比較し、順位に応じた名声</td></tr>
-                    <tr><td>IX</td><td>終了条件</td><td>終了条件を満たしたプレイヤーは 3</td></tr>
-                </tbody>
-            </table>
-            <p>通信確立の広さ（区域数）と深さ（地域の種類数）、ミッションの達成、褒賞での順位取り──得点源が複数あり、どれを主軸に据えるかがそのまま戦略になります。</p>
-        </div>
-    </section>
-
     <section id="contents">
         <div class="content-container">
             <h2>内容物</h2>
@@ -325,6 +193,7 @@
 
             <h3>詳細ルール</h3>
             <p>詳細ルール：<a href="https://www.dropbox.com/scl/fi/zinihtqju1uajx8xlkgoy/rulebook.pdf?rlkey=ls362jm5p178jg48bfjrjf8jy&dl=0" target="_blank" rel="noopener">ルールブック（PDF）</a></p>
+            <p>概要理解：<a href="https://www.dropbox.com/scl/fi/hx3rvg4e1205kgk3ui0pg/introduction_slide.pdf?rlkey=7ffu38p39g5enhwpracffrujg&dl=0">ゲーム紹介用スライド</a></p>
             <p>プロジェクトカードはオールユニーク効果であるため、疑問点が生じることがあります。FAQを充実させていますが、ご不明な点は<a href="/contact.html">お問い合わせページ</a>、または <a href="https://x.com/danjiriconcerto">X（旧 Twitter）</a>の DM よりご連絡ください。</p>
 
             <h3>制作・著作</h3>

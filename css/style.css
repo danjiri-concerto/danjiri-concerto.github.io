@@ -1470,6 +1470,31 @@ body.page-edgeworth .faq-item:hover {
 body.page-edgeworth .question { color: #fff; }
 body.page-edgeworth strong { color: #fff; }
 
+/* 動画埋め込み */
+.video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 20px 0 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: #000;
+}
+.video-embed-vertical {
+  aspect-ratio: 9 / 16;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* ルール解説スライド */
 .rule-steps {
   display: grid;
