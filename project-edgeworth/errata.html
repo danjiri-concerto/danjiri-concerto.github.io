@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PROJECT EDGEWORTH のエラッタ（印刷物の訂正）一覧。">
+    <title>PROJECT EDGEWORTH エラッタ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/logos/danjiri.png" type="image/png">
+    <script src="/loadHtml.js"></script>
+    <script src="/device-detection.js"></script>
+</head>
+<body class="page-edgeworth">
+    <div id="navbar-placeholder"></div>
+
+    <section id="hero-edgeworth" class="page-hero pe-faq-hero">
+        <div class="hero-lore">
+            <p class="hero-lore-eyebrow">PROJECT EDGEWORTH</p>
+            <h2 class="hero-lore-title">ERRATA</h2>
+            <div class="hero-lore-divider"></div>
+            <p class="hero-lore-tagline">印刷物の訂正</p>
+        </div>
+    </section>
+
+    <section id="errata">
+        <div class="content-container">
+            <p>製品の印刷物に以下の誤りがありました。お詫びして訂正いたします。</p>
+
+            <article class="faq-item pe-faq-item">
+                <div class="pe-faq-meta">
+                    <span class="pe-faq-tag">プロジェクトカード</span>
+                </div>
+                <p class="question">P098「バックリンク」：効果発動タイミングのアイコン</p>
+                <table class="pe-errata-table">
+                    <tr><th>誤</th><td>企画フェイズ中（巻物のアイコン）</td></tr>
+                    <tr><th>正</th><td>循環フェイズ中（循環矢印のアイコン）</td></tr>
+                </table>
+                <p class="pe-faq-answer">効果文のとおり、循環フェイズでこの衛星が自分の通信確立済み区域の上空に突入したときに発動します。</p>
+                <div class="pe-card-row">
+                    <button type="button" class="pe-card pe-card-main" data-card="P098" data-name="バックリンク">
+                        <img src="/images/project-edgeworth/cards_web/P098.webp" alt="P098 バックリンク" loading="lazy">
+                        <span>P098<br>バックリンク</span>
+                    </button>
+                </div>
+            </article>
+
+            <p class="pe-faq-footnote">
+                ルールやカード効果に関する質問は<a href="/project-edgeworth/faq.html">FAQページ</a>をご覧ください。
+            </p>
+        </div>
+    </section>
+
+    <!-- カード画像拡大モーダル -->
+    <div class="pe-card-modal" id="pe-card-modal" hidden>
+        <figure>
+            <button type="button" class="pe-card-modal-close" aria-label="閉じる">×</button>
+            <img id="pe-card-modal-img" src="" alt="">
+            <figcaption id="pe-card-modal-caption"></figcaption>
+        </figure>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        loadHtml("footer-placeholder", "/footer.html");
+
+        const modal = document.getElementById('pe-card-modal');
+        document.getElementById('errata').addEventListener('click', (e) => {
+            const btn = e.target.closest('.pe-card');
+            if (!btn) return;
+            const img = document.getElementById('pe-card-modal-img');
+            img.src = btn.querySelector('img').src;
+            img.alt = btn.querySelector('img').alt;
+            document.getElementById('pe-card-modal-caption').textContent = `${btn.dataset.card}　${btn.dataset.name}`;
+            modal.hidden = false;
+        });
+        modal.addEventListener('click', () => { modal.hidden = true; });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.hidden = true; });
+    </script>
+</body>
+</html>

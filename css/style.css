@@ -1744,3 +1744,16 @@ body.page-edgeworth .pe-faq-answer {
   .pe-card[data-card^="R"].pe-card-sub img { width: 96px; }
   .pe-card[data-card^="R"].pe-card-sub span { max-width: 96px; }
 }
+
+/* PROJECT EDGEWORTH エラッタ (/project-edgeworth/errata.html) */
+.pe-errata-table {
+  width: auto;
+  margin: 4px 0 12px;
+  border-collapse: collapse;
+}
+body.page-edgeworth .pe-errata-table th {
+  width: 3em;
+  padding: 6px 12px;
+  text-align: center;
+}
+body.page-edgeworth .pe-errata-table td { padding: 6px 14px; }
