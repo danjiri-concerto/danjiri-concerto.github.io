@@ -8,8 +8,13 @@ URL: `https://danjiri-concerto.github.io/`
 ### 制作ゲーム
 | タイトル | ジャンル | ページパス |
 |---|---|---|
+| PROJECT EDGEWORTH | 通信衛星網構築・同時アクション選択 | `/project-edgeworth/` |
 | MINIMUM JOURNEY | デッキ構築・宇宙開発競争 | `/minimum-journey/` |
-| 我廻る、故に我あり | エンジンビルド・ワーカープレイスメント | `/i-revolve-therefore-i-am/` |
+| MINIMUM JOURNEY -ABYSS- | MJ 拡張（5〜6人対応） | `/minimum-journey-abyss/` |
+| MINIMUM JOURNEY -BLUR- | MJ 拡張（イベントカード） | `/minimum-journey-blur/` |
+| 我廻る、故に我あり (I Revolve, Therefore I Am) | エンジンビルド・ワーカープレイスメント | `/i-revolve-therefore-i-am/` |
+
+各ゲームページには英語版 `index-en.html` があります（後述「日本語・英語ページ」）。
 
 ---
 
@@ -20,6 +25,7 @@ URL: `https://danjiri-concerto.github.io/`
 ├── index.html                     # トップページ（ゲーム一覧）
 ├── index-en.html                  # 英語版トップページ
 ├── contact.html                   # お問い合わせページ
+├── contact-en.html                # 英語版お問い合わせページ
 ├── game.html                      # ゲーム一覧（モバイル用）
 ├── sitemap.xml                    # サイトマップ
 │
@@ -34,11 +40,21 @@ URL: `https://danjiri-concerto.github.io/`
 │
 ├── minimum-journey/
 │   ├── index.html                 # MJゲームページ
-│   └── faq.html                   # MJ FAQ
+│   ├── index-en.html              # 英語版
+│   └── faq.html                   # MJ FAQ（日本語のみ）
+│
+├── minimum-journey-abyss/         # index.html / index-en.html
+├── minimum-journey-blur/          # index.html / index-en.html
 │
 ├── i-revolve-therefore-i-am/
 │   ├── index.html                 # 我廻るゲームページ
-│   └── faq.html                   # 我廻る FAQ
+│   ├── index-en.html              # 英語版
+│   └── faq.html                   # 我廻る FAQ（日本語のみ）
+│
+├── project-edgeworth/
+│   ├── index.html / index-en.html
+│   ├── faq.html                   # 日本語のみ
+│   └── errata.html                # 日本語のみ
 │
 ├── rulebooks/                     # PDFルールブック（ローカル保管分）
 │   ├── minimum_journey_rulebook.pdf
@@ -51,6 +67,9 @@ URL: `https://danjiri-concerto.github.io/`
 ├── navbar-desktop.html            # PC用ナビゲーションバー
 ├── navbar-mobile.html             # モバイル用ナビゲーションバー
 ├── footer.html                    # フッター
+├── navbar-desktop-en.html         # 英語版（以下同様）
+├── navbar-mobile-en.html
+├── footer-en.html
 │
 # ── JavaScript ────────────────────────────────────────────
 ├── loadHtml.js                    # fetch() でHTMLフラグメントを挿入
@@ -72,7 +91,26 @@ URL: `https://danjiri-concerto.github.io/`
 ```
 
 ナビゲーションバーは `device-detection.js` が UA と画面幅 (≤768px) を判定し、  
-`navbar-desktop.html` または `navbar-mobile.html` を読み込みます。
+`navbar-desktop.html` または `navbar-mobile.html` を読み込みます。  
+`<html lang="en">` のページでは `-en` 付きのナビゲーションバーを読み込みます。
+
+---
+
+## 日本語・英語ページ
+
+日本語ページ `foo/index.html` と英語ページ `foo/index-en.html` を対で管理します（トップは `/index-en.html`、お問い合わせは `/contact-en.html`）。
+
+### ルール
+
+- **片方を更新したら、もう片方も同じ内容に更新する**（予約状況・価格・誤植・リンク・動画など）。
+- 英語ページは `<html lang="en">`、フッターは `/footer-en.html`、サイト内リンクは英語ページ（`index-en.html`, `/contact-en.html`）へ向ける。
+- 両方のページの `<head>` に、対になるページへの `<link rel="alternate" hreflang="ja|en">` を入れる。ナビの言語切替リンク（`.lang-switch`）はこれを読んで飛び先を決める。ない場合はトップページへ飛ぶ。
+- 日本語のルール説明画像・図解は英語ページに貼らず、同じ内容を英語の本文で書く。英語版画像（例: `images/minimum-journey/rules/rule_en.png`）がある場合はそれを使う。
+- 英語ページから日本語のみの資料（FAQ・エラッタ・ルールブック・動画・予約フォーム）へリンクするときは「(Japanese)」と明記する。
+- 動画は日本語ページに日本語版、英語ページに英語版を貼る。英語版がない場合は日本語版を貼り「The videos below are in Japanese.」と添える。
+- MINIMUM JOURNEY の用語は英語ルールブック（`rulebooks/minimum_journey_rulebook_en.pdf`）に合わせる：exploration power / exploration output / exploration cost / fame points / amulet card / drifting cards / preparation area / exploration row / DRAW・STOP。
+- カード名は印刷が日本語なので、英語ページでは `"航路安全のお守り" (Amulet of Safe Voyage)` のように日本語名＋英訳で書く。
+- 新しいページを追加したら `sitemap.xml` に日英両方の URL を追加する。
 
 ### CSS 設計方針
 
@@ -98,19 +136,19 @@ URL: `https://danjiri-concerto.github.io/`
 ## 新しいゲームを追加する手順
 
 1. **ディレクトリ作成**  
-   `/<game-slug>/index.html` と `/<game-slug>/faq.html` を作成
+   `/<game-slug>/index.html`・`/<game-slug>/index-en.html`・`/<game-slug>/faq.html` を作成
 
 2. **ヒーロー画像**  
    `images/<game-slug>/` に WebP 形式で用意し、`css/style.css` に `#hero-<game-slug>` セクションを追記
 
 3. **ナビゲーションバーに追加**  
-   `navbar-desktop.html` と `navbar-mobile.html` のゲームリストに `<li>` を追加
+   `navbar-desktop.html`・`navbar-mobile.html` と、その `-en` 版のゲームリストに `<li>` を追加
 
 4. **トップページに追加**  
-   `index.html` の `#games` セクションに `.game-item` ブロックを追加
+   `index.html` と `index-en.html` の `#games` セクションに `.game-card` ブロックを追加
 
 5. **sitemap.xml を更新**  
-   新ページの URL を追加
+   新ページの URL を日英とも追加
 
 ---
 
@@ -131,16 +169,14 @@ npx serve .
 
 ### ブランチ運用
 
-- `main`     : 本番前の統合ブランチ
-- `gh-pages` : GitHub Pages 公開ブランチ（本番）
+- `gh-pages` : GitHub Pages 公開ブランチ（本番）。作業はこのブランチで直接行う
+- `main`     : 古いので使わない（`gh-pages` にマージしない）
 
 ### デプロイ
 
 `gh-pages` ブランチに push するとサイトが自動更新されます。
 
 ```bash
-git checkout gh-pages
-git merge main
 git push origin gh-pages
 ```
 

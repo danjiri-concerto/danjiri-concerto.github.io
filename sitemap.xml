@@ -11,8 +11,8 @@
 
   <!-- 各ページのURLを追加 -->
   <url>
-    <loc>https://danjiri-concerto.github.io/index-en</loc>
-    <lastmod>2024-11-13</lastmod>
+    <loc>https://danjiri-concerto.github.io/index-en.html</loc>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -57,6 +57,48 @@
     <lastmod>2024-11-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://danjiri-concerto.github.io/minimum-journey/index-en.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://danjiri-concerto.github.io/minimum-journey-abyss/index-en.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://danjiri-concerto.github.io/minimum-journey-blur/index-en.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://danjiri-concerto.github.io/i-revolve-therefore-i-am/index-en.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://danjiri-concerto.github.io/project-edgeworth/index-en.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://danjiri-concerto.github.io/contact-en.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 
 </urlset>

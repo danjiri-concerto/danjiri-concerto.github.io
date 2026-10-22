@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PROJECT EDGEWORTH | A satellite network-building game. Build a low Earth orbit constellation, establish communications around the world, and compete for prestige. 2–4 players, 40–60 minutes.">
+    <title>PROJECT EDGEWORTH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/logos/danjiri.png" type="image/png">
+    <link rel="alternate" hreflang="ja" href="/project-edgeworth/index.html">
+    <link rel="alternate" hreflang="en" href="/project-edgeworth/index-en.html">
+    <script src="/loadHtml.js"></script>
+    <script src="/device-detection.js"></script>
+</head>
+<body class="page-edgeworth">
+    <div id="navbar-placeholder"></div>
+
+    <section id="hero-edgeworth" class="page-hero">
+        <div class="hero-lore">
+            <p class="hero-lore-eyebrow">International agreement PROJECT EDGEWORTH ── the race for orbital supremacy</p>
+            <h2 class="hero-lore-title">PROJECT<br>EDGEWORTH</h2>
+            <div class="hero-lore-divider"></div>
+            <p class="hero-lore-quote">Orbit is no longer empty space.<br>Over limited orbital slots and limited frequency bands, nations and companies around the world were locked in a quiet but fierce competition.</p>
+            <p class="hero-lore-tagline">A satellite network-building game</p>
+        </div>
+    </section>
+
+    <div class="toc">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#leo">What is a LEO network?</a></li>
+            <li><a href="#contents">Components</a></li>
+            <li><a href="#purchase">Buy / Rulebook</a></li>
+            <li><a href="/project-edgeworth/faq.html">FAQ (Japanese)</a></li>
+            <li><a href="/project-edgeworth/errata.html">Errata (Japanese)</a></li>
+        </ul>
+    </div>
+
+    <section id="about">
+        <div class="content-container">
+            <h2>About</h2>
+            <p>PROJECT EDGEWORTH is a satellite operations board game in which you build your very own communication satellite network in orbit.</p>
+            <p>You are the commander of an organization selected by the international body OCC (Orbital Communications Council). You equip your satellites with crew (CREW), devices (DEVICE), and software (SOFTWARE), launch them, and send them around the Earth, establishing communications (proving communication stability) in regions all over the world.</p>
+            <p>Each round, all players secretly choose an action at the same time and reveal them together. <strong>Actions nobody chose are not carried out that round, and you can join in on actions other players chose.</strong> So it is not only about what you want to do, but also about reading what the others are likely to pick.</p>
+
+            <div class="spec-list">
+                <div class="spec-item">
+                    <span class="spec-label">Players</span>
+                    <span class="spec-value">2–4</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Play time</span>
+                    <span class="spec-value">40–60 min</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Weight</span>
+                    <span class="spec-value">2.8/5</span>
+                </div>
+            </div>
+
+            <div class="game-shot">
+                <img src="/images/project-edgeworth/thumbnails/thumbnail_web.png" alt="PROJECT EDGEWORTH overview" width="2000" height="1125">
+            </div>
+
+            <h3>Videos</h3>
+            <p>The videos below are in Japanese.</p>
+            <div class="video-embed">
+                <iframe src="https://www.youtube-nocookie.com/embed/rqmTDy8NKSo"
+                        title="【PV】PROJECT EDGEWORTH ｜ 通信衛星網を構築し、軌道の覇者となれ！"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-embed">
+                <iframe src="https://www.youtube-nocookie.com/embed/4eCIUmQ_ot8"
+                        title="7分でわかる！通信衛星網構築ボードゲーム『PROJECT EDGEWORTH』ゲーム紹介【ずんだもん・四国めたん解説】"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-embed video-embed-vertical">
+                <iframe src="https://www.youtube-nocookie.com/embed/uWnmP7WTEdY"
+                        title="【#ゲムマ2026秋】PROJECT EDGEWORTH"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen></iframe>
+            </div>
+
+            <h3>Goal of the game</h3>
+            <p>Build a better communication satellite network than any other organization.</p>
+
+            <h3>The three key actions</h3>
+            <div class="rounded-box-text">
+                <ol>
+                    <li><strong>Upgrade your satellites.</strong> Deploy project cards onto your satellite cards, and turn each satellite into something uniquely yours with crew, devices, and software.</li>
+                    <li><strong>Launch your satellites.</strong> Launch a satellite from a region that holds one of your launch sites, choosing the direction you want it to travel.</li>
+                    <li><strong>Prove communication stability.</strong> Run a communication check in the region directly below one of your satellites, and place a cube there as proof of your achievement.</li>
+                </ol>
+            </div>
+
+            <h3>What makes it fun</h3>
+            <div class="rounded-box-text">
+                <ul>
+                    <li><strong>High replayability.</strong> Double-sided modular boards and project cards whose effects are all unique. Every game brings a completely different map and different combinations.</li>
+                    <li><strong>A near-future setting.</strong> Low Earth orbit satellite networks, the technology behind Starlink. Experience building one as a commander.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="story">
+        <div class="content-container">
+            <h2>Story</h2>
+            <div class="rounded-box">
+                <p>Orbit is no longer empty space. Low Earth orbit is already crowded with countless communication satellites. Some belong to giant state-led projects, others to ambitious ventures backed by private capital. Over limited orbital slots and limited frequency bands, nations and companies around the world were locked in a quiet but fierce competition.</p>
+                <p>Then an international agreement was born: PROJECT EDGEWORTH, a communication infrastructure project shared by the whole world and owned by no single nation or company. Under the leadership of the international body OCC (Orbital Communications Council), organizations selected from around the world take part, each building and proving its own satellite network and competing on the results.</p>
+                <p>The rules are simple. Launching satellites alone means nothing. You must put the right people in the field, choose equipment you can trust, and build robustness into every line of software. Then you must run real communication checks at sites all over the world, from ground stations in the Arctic to relay stations in deserts on the equator, and show results no one can dispute.</p>
+                <p>Only by building up those results can you meet the international certification standards set by PROJECT EDGEWORTH, and only that way can you win the trust and acclaim of the world.</p>
+                <p>Only one question matters: how precisely and how reliably can you run things in the field? You are the commander leading one of these organizations. With precision and execution in the field, become the master of orbit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="leo">
+        <div class="content-container">
+            <h2>What is a LEO satellite network?</h2>
+            <p>PROJECT EDGEWORTH is based on something being built around the world right now: <strong>low Earth orbit (LEO) communication satellite networks</strong>. SpaceX's Starlink is the best-known example. In Japan, the mobile carrier au offers "au Starlink Direct", a service that connects smartphones directly to satellites.</p>
+
+            <h3>Connecting from the sky, not from towers on the ground</h3>
+            <p>Conventional mobile networks rely on base stations built on the ground. Each one transmits radio waves and covers the area around it. In cities this gives fast, stable connections, but in mountains, on remote islands, or at sea, where there are no base stations, there is no signal.</p>
+            <p>In a LEO network, a large number of satellites circle the Earth at high speed only about 340–550 km up, working together to cover the planet. Devices talk directly to whichever satellite is passing overhead, so <strong>as long as you can see the sky, you may be able to connect even where there are no base stations</strong>. LEO networks are also expected to serve as a backup when disasters knock out ground infrastructure.</p>
+
+            <div class="rounded-box-text">
+                <ul>
+                    <li><strong>Coverage</strong>: LEO is strong over wide and remote areas; conventional mobile networks are strong in cities and populated areas.</li>
+                    <li><strong>Main infrastructure</strong>: LEO uses satellites plus ground stations; conventional networks use base stations plus a ground network.</li>
+                    <li><strong>Best suited for</strong>: LEO for disaster backup, remote islands, ships, and mountains; conventional networks for everyday calls and data.</li>
+                    <li><strong>In a picture</strong>: LEO covers whole areas from the sky; conventional networks cover points from the ground.</li>
+                </ul>
+            </div>
+            <p>Neither is simply better. LEO networks provide "communication that reaches far", and conventional mobile networks provide "communication that supports everyday life". They compete, but they also complement each other.</p>
+
+            <h3>How it works in the game</h3>
+            <p>This system translates directly into the rules. Once launched, a satellite <strong>keeps moving one region per round</strong> in the direction it was launched, and the left and right edges of the board connect, representing one trip around the Earth. You can establish communications <strong>only in the region directly below one of your satellites</strong>. That is why deciding where, in which direction, and when to launch becomes the design of your satellite network.</p>
+
+            <h3>Learn more (in Japanese)</h3>
+            <ul>
+                <li><a href="https://www.au.com/brand/tsunagu/starlink/tech/" target="_blank" rel="noopener">au Starlink Direct: How it connects (au official)</a> — how smartphones connect directly to satellites at about 340 km altitude</li>
+                <li><a href="https://www.youtube.com/playlist?list=PLS7azqUNoh8uUgymsdeUaywy1ZGJmjYoz" target="_blank" rel="noopener">au Starlink Direct video guide (au official YouTube playlist)</a></li>
+                <li><a href="https://www.au.com/mobile/service/starlink-direct/" target="_blank" rel="noopener">au Starlink Direct service page (au official)</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contents">
+        <div class="content-container">
+            <h2>Components</h2>
+            <div class="rounded-box-text">
+                <ul>
+                    <li>8 region boards (double-sided)</li>
+                    <li>1 track board (front: budget track / back: prestige track)</li>
+                    <li>99 project cards</li>
+                    <li>20 satellite cards (5 in each of 4 colors, double-sided)</li>
+                    <li>10 mission cards</li>
+                    <li>12 reward cards (double-sided)</li>
+                    <li>20 action cards (5 × 4)</li>
+                    <li>66 Maya chips</li>
+                    <li>4 launch site pieces</li>
+                    <li>20 satellite pieces (5 in each of 4 colors)</li>
+                    <li>64 cubes (16 in each of 4 colors)</li>
+                    <li>4 disc pieces</li>
+                    <li>20 fuel pieces (5 in each of 4 colors)</li>
+                    <li>1 rulebook</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="purchase">
+        <div class="content-container">
+            <h2>Buy / Full rules</h2>
+            <h3>Buy</h3>
+            <p>Online store (shipping within Japan): <a href="https://danjiriconcerto.booth.pm/items/9001468" target="_blank" rel="noopener">BOOTH</a></p>
+            <p>Reservations for Game Market 2026 Autumn are now closed.</p>
+
+            <h3>Full rules</h3>
+            <p>Full rules: <a href="https://www.dropbox.com/scl/fi/zinihtqju1uajx8xlkgoy/rulebook.pdf?rlkey=ls362jm5p178jg48bfjrjf8jy&dl=0" target="_blank" rel="noopener">Rulebook (PDF, Japanese)</a></p>
+            <p>Overview: <a href="https://www.dropbox.com/scl/fi/hx3rvg4e1205kgk3ui0pg/introduction_slide.pdf?rlkey=7ffu38p39g5enhwpracffrujg&dl=0">Introduction slides (Japanese)</a></p>
+            <p>Every project card has a unique effect, so questions may come up during play. The <a href="/project-edgeworth/faq.html">FAQ page</a> (Japanese) can be searched by card number or card name, and corrections to the printed components are on the <a href="/project-edgeworth/errata.html">errata page</a> (Japanese). If the FAQ does not answer your question, please reach us through the <a href="/contact-en.html">contact page</a> or by DM on <a href="https://x.com/danjiriconcerto">X (formerly Twitter)</a>.</p>
+
+            <h3>Online version (Board Game Arena)</h3>
+            <p>Official Board Game Arena adaptation: PROJECT EDGEWORTH is designed and published by Danjiri Concerto, and we are adapting it for <a href="https://boardgamearena.com/" target="_blank" rel="noopener">Board Game Arena</a> ourselves. The BGA Studio project "projectedgeworth", developed by our member Zone (BGA username: ZoneTsuyoshi), is the official implementation, and we authorize Board Game Arena to publish it. We contact Board Game Arena from the email address on our <a href="/contact-en.html">contact page</a>. BoardGameGeek: <a href="https://boardgamegeek.com/boardgame/481869/project-edgeworth" target="_blank" rel="noopener">PROJECT EDGEWORTH</a> / <a href="https://boardgamegeek.com/boardgamepublisher/64662/danjiri-concerto" target="_blank" rel="noopener">Danjiri Concerto</a>.</p>
+
+            <h3>Design and publishing</h3>
+            <p>Danjiri Concerto (Zone, Maya, Hinoki, Tazukuri)</p>
+            <h3>Artwork</h3>
+            <p>Zone, DALL·E</p>
+            <h3>Playtesters</h3>
+            <p>國生ミカド, 衛良タケル, しょーせい, まさと, KB, ふうか, しんちゃん, 社長, みなみ, ガマ, Dason, かしゃい, サイトウクン, かいと, にわ, かれん, あっさい, ゆい</p>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        loadHtml("footer-placeholder", "/footer-en.html");
+    </script>
+</body>
+</html>

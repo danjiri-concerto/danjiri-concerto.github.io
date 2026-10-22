@@ -25,14 +25,30 @@ function closeMobileNav() {
     nav.classList.remove("is-open");
 }
 
+function isEnglishPage() {
+    return document.documentElement.lang.indexOf("en") === 0;
+}
+
+// <link rel="alternate" hreflang="..."> があれば、言語切替リンクを対応ページに向ける
+function updateLangSwitch() {
+    var targetLang = isEnglishPage() ? "ja" : "en";
+    var alt = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');
+    if (!alt) return;
+    document.querySelectorAll(".lang-switch").forEach(function(link) {
+        link.setAttribute("href", alt.getAttribute("href"));
+    });
+}
+
 function loadDeviceSpecificNavbar() {
     var isMobile = isMobileDevice();
-    var headerFile = isMobile ? "/navbar-mobile.html" : "/navbar-desktop.html";
+    var suffix = isEnglishPage() ? "-en" : "";
+    var headerFile = isMobile ? "/navbar-mobile" + suffix + ".html" : "/navbar-desktop" + suffix + ".html";
 
     fetch(headerFile)
         .then(function(response) { return response.text(); })
         .then(function(data) {
             document.getElementById("navbar-placeholder").innerHTML = data;
+            updateLangSwitch();
             if (isMobile) {
                 // リンククリックでメニューを閉じる
                 var nav = document.getElementById("mobile-nav");
