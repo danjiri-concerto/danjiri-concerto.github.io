@@ -41,6 +41,7 @@ URL: `https://danjiri-concerto.github.io/`
 ├── minimum-journey/
 │   ├── index.html                 # MJゲームページ
 │   ├── index-en.html              # 英語版
+│   ├── errata.html / errata-en.html # 誤植訂正（ゲームページから分離）
 │   └── faq.html                   # MJ FAQ（日本語のみ）
 │
 ├── minimum-journey-abyss/         # index.html / index-en.html

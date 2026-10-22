@@ -1757,3 +1757,17 @@ body.page-edgeworth .pe-errata-table th {
   text-align: center;
 }
 body.page-edgeworth .pe-errata-table td { padding: 6px 14px; }
+
+/* MINIMUM JOURNEY エラッタ (/minimum-journey/errata.html) */
+#hero-mj.page-hero.mj-sub-hero { min-height: 36vh; }
+.errata-group { margin: 20px 0; }
+.errata-group ul { text-align: left; line-height: 1.8; }
+.errata-group ul ul { margin: 4px 0 12px; }
+body.page-mj .errata-group h4 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  #hero-mj.page-hero.mj-sub-hero { min-height: 30vh; }
+}

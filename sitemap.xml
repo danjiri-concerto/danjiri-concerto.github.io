@@ -101,4 +101,18 @@
     <priority>0.4</priority>
   </url>
 
+  <url>
+    <loc>https://danjiri-concerto.github.io/minimum-journey/errata.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://danjiri-concerto.github.io/minimum-journey/errata-en.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
