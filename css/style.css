@@ -1771,3 +1771,41 @@ body.page-mj .errata-group h4 {
 @media (max-width: 768px) {
   #hero-mj.page-hero.mj-sub-hero { min-height: 30vh; }
 }
+
+/* =====================================================
+   ロゴ（103 巴太鼓・ダーク版）
+   ===================================================== */
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-logo img {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+/* トップページのバナー：横組みロゴを暗い背景に置く */
+#hero.hero-brand {
+  background-image: radial-gradient(ellipse at center, #2d2d3f 0%, var(--color-dark) 55%, #14141e 100%);
+  padding: 64px 24px 72px;
+}
+#hero.hero-brand::after { display: none; }
+#hero.hero-brand h2::after { display: none; }
+#hero.hero-brand h2 { display: block; margin-bottom: 8px; }
+.hero-lockup {
+  display: block;
+  width: min(760px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+#hero.hero-brand p {
+  color: #F5EEE1;
+  letter-spacing: 0.12em;
+  margin-top: 0;
+}
+@media (max-width: 768px) {
+  .site-logo img { width: 34px; height: 34px; }
+  #hero.hero-brand { padding: 40px 16px 48px; }
+}

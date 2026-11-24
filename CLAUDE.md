@@ -33,8 +33,14 @@ URL: `https://danjiri-concerto.github.io/`
 │   └── style.css                  # 全ページ共通スタイルシート
 │
 ├── images/
-│   ├── header.webp                # トップページヒーロー画像
-│   ├── logos/danjiri.png          # ファビコン・ロゴ
+│   ├── header.webp                # 旧トップページヒーロー画像（現在は game.html のみ）
+│   ├── logos/
+│   │   ├── danjiri-concerto/      # 団体ロゴ（103 巴太鼓）。元データは ../danjiri-concerto-logo/concepts/103-tomoe-ring-wa
+│   │   │   ├── lockup-dark.png    # トップページのバナー（横組み・暗い背景用）
+│   │   │   ├── mark-dark-160.png  # ヘッダーのアイコン
+│   │   │   └── mark-*.png / lockup-*.png / *.svg  # その他の書き出し（SVG は文字がフォント依存なのでサイトでは PNG を使う）
+│   │   ├── favicon-192.png / favicon-48.png / apple-touch-icon.png  # mark-on-black から作ったファビコン
+│   │   └── danjiri.png            # 旧ロゴ（未使用）
 │   ├── minimum-journey/           # MJ用画像
 │   └── i-revolve-therefore-i-am/ # 我廻る用画像
 │
